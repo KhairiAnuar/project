@@ -32,7 +32,7 @@
                 </form>
 
 
-                <!--testing in console-->
+                <!--testing in console
                 <script>
                     var apiKey='AIzaSyD4WaKSSRrkabUrPDiyN0NrNRF2pAYRnlU';
                     var cx= '013562356057062446115:fhyiygpryes';
@@ -41,7 +41,7 @@
                         console.log(data);})
                 </script>
 
-
+                -->
             </div>
         </div>
     </div>
