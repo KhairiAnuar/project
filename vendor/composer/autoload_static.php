@@ -6,9 +6,31 @@ namespace Composer\Autoload;
 
 class ComposerStaticInit788a539ee4edf387dcf502579aab502d
 {
+    public static $prefixesPsr0 = array (
+        'U' => 
+        array (
+            'Unirest\\' => 
+            array (
+                0 => __DIR__ . '/..' . '/mashape/unirest-php/src',
+            ),
+            'Unirest' => 
+            array (
+                0 => __DIR__ . '/../..' . '/lib',
+            ),
+        ),
+    );
+
+    public static $classMap = array (
+        'AYLIEN\\TextAPI' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/TextAPI.php',
+        'AYLIEN\\TextAPI\\IO_Abstract' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/IO/Abstract.php',
+        'AYLIEN\\TextAPI\\IO_Curl' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/IO/Curl.php',
+    );
+
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
+            $loader->prefixesPsr0 = ComposerStaticInit788a539ee4edf387dcf502579aab502d::$prefixesPsr0;
+            $loader->classMap = ComposerStaticInit788a539ee4edf387dcf502579aab502d::$classMap;
 
         }, null, ClassLoader::class);
     }

@@ -1,5 +1,11 @@
 {
   "require": {
-    "php": ">=7.3.1"
+    "php": ">=7.3.1",
+    "mashape/unirest-php": "^3.0",
+    "aylien/textapi": "0.6.*",
+    "ext-json": "*"
+  },
+  "autoload": {
+    "psr-0": {"Unirest": "lib/"}
   }
 }

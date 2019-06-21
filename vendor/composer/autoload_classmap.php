@@ -6,4 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'AYLIEN\\TextAPI' => $vendorDir . '/aylien/textapi/src/AYLIEN/TextAPI.php',
+    'AYLIEN\\TextAPI\\IO_Abstract' => $vendorDir . '/aylien/textapi/src/AYLIEN/IO/Abstract.php',
+    'AYLIEN\\TextAPI\\IO_Curl' => $vendorDir . '/aylien/textapi/src/AYLIEN/IO/Curl.php',
 );
