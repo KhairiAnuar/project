@@ -102,55 +102,6 @@ if ($err) {
 }*/
 
 
-// Create a URL handle.
-$curlPage = curl_init();
-
-// Tell curl what URL we want.
-curl_setopt($curlPage, CURLOPT_URL, $url);
-
-// We want to return the web page from curl_exec, not
-// print it.
-curl_setopt($curlPage,CURLOPT_RETURNTRANSFER,1);
-
-// Set this if you don't want the content header.
-curl_setopt($curlPage, CURLOPT_HEADER, 0);
-
-// Download the HTML from the URL.
-$content = curl_exec($curlPage);
-
-// Check to see if there were errors.
-if(curl_errno($curlPage)) {
-    // We have an error. Show the error message.
-    echo curl_error($curlPage);
-}
-else {
-    // No error. Save the page content.
-    $file = 'content.html';
-
-    // Open a file for writing.
-    $fh = fopen($file, 'w');
-
-    if(!$fh) {
-        // Couldn't create the file.
-        echo "Unable to create $file";
-    }
-    else {
-        // Write the retrieved
-        // html to the file.
-        fwrite($fh, $content);
-
-        // Display a message to say
-        // we've saved the file OK.
-        echo "Saved $file";
-
-        // Close the file.
-        fclose($fh);
-    }
-}
-
-// Close the curl handle.
-curl_close($curlPage);
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -164,7 +115,7 @@ curl_close($curlPage);
                 <div class="col mx-auto">
                     <div id="outputResult">
                 <?php //echo $decodedResponse['summary']
-                        var_dump($file);
+
                 ?>
 
                     </div>
