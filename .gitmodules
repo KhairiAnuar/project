@@ -1,0 +1,3 @@
+[submodule "web-scraper/web-scraper"]
+	path = web-scraper/web-scraper
+	url = https://github.com/thevatsalshah/web-scraper.git
