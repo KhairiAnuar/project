@@ -4,20 +4,20 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "cc151aa0da0725ae03e9a31db51ce5c9",
+    "content-hash": "f470c8a9c883dcf2889673b1225cf927",
     "packages": [
         {
             "name": "aylien/textapi",
-            "version": "v0.6.0",
+            "version": "v0.8.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/AYLIEN/aylien_textapi_php.git",
-                "reference": "ce4a028836836f3faeeacc7fabd64da6b3184a99"
+                "reference": "a7b78b4d964a275e9e4827a918085b0526caff36"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/AYLIEN/aylien_textapi_php/zipball/ce4a028836836f3faeeacc7fabd64da6b3184a99",
-                "reference": "ce4a028836836f3faeeacc7fabd64da6b3184a99",
+                "url": "https://api.github.com/repos/AYLIEN/aylien_textapi_php/zipball/a7b78b4d964a275e9e4827a918085b0526caff36",
+                "reference": "a7b78b4d964a275e9e4827a918085b0526caff36",
                 "shasum": ""
             },
             "require": {
@@ -38,13 +38,13 @@
             ],
             "authors": [
                 {
-                    "name": "Amir Mohammad Saeid",
-                    "email": "amir@aylien.com"
+                    "name": "Aylien Inc.",
+                    "email": "support@aylien.com"
                 }
             ],
             "description": "Client library for AYLIEN Text API",
             "homepage": "https://github.com/AYLIEN/aylien_textapi_php",
-            "time": "2016-04-27T11:08:01+00:00"
+            "time": "2018-08-21T07:57:08+00:00"
         },
         {
             "name": "mashape/unirest-php",
@@ -100,7 +100,6 @@
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
-        "php": ">=7.3.1",
         "ext-json": "*"
     },
     "platform-dev": []

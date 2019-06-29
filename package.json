@@ -1,7 +1,9 @@
 {
   "dependencies": {
+    "@postlight/mercury-parser": "^2.1.1",
     "gulp": "^4.0.2",
     "gulpfile": "^1.0.2",
+    "http-server": "^0.11.1",
     "requirejs": "^2.3.6",
     "unirest": "^0.6.0"
   },
