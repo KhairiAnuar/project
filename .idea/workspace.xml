@@ -2,44 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62458d4f-d025-48c6-8585-cced2c13357a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/assets/scripts/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/assets/scripts/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/graceful-fs/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/graceful-fs/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/graceful-fs/polyfills.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/graceful-fs/polyfills.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/inherits/inherits.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/inherits/inherits.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/inherits/inherits_browser.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/inherits/inherits_browser.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/inherits/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/inherits/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/mixin-deep/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/mixin-deep/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/mixin-deep/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/mixin-deep/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/process-nextick-args/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/process-nextick-args/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/process-nextick-args/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/process-nextick-args/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/lib/async.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/lib/async.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/lib/node-modules-paths.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/lib/node-modules-paths.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/lib/sync.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/lib/sync.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/test/node-modules-paths.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/test/node-modules-paths.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/test/resolver.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/test/resolver.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/test/resolver_sync.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/resolve/test/resolver_sync.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/set-value/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/set-value/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/set-value/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/set-value/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/gulp/node_modules/union-value/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/gulp/node_modules/union-value/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/track.php" beforeDir="false" afterPath="$PROJECT_DIR$/track.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aylien/textapi/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aylien/textapi/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aylien/textapi/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aylien/textapi/composer.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aylien/textapi/src/AYLIEN/TextAPI.php" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/aylien/textapi/src/AYLIEN/TextAPI.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aylien/textapi/tests/fixtures/microformats.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aylien/textapi/tests/fixtures/related.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/aylien/textapi/tests/fixtures/unsupervisedClassify.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/vendor/composer/installed.json" beforeDir="false" afterPath="$PROJECT_DIR$/vendor/composer/installed.json" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,7 +22,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/savePage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
+            <state relative-caret-position="-578">
               <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="25" />
             </state>
           </provider>
@@ -86,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/track.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="121" column="23" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
+            <state relative-caret-position="165">
+              <caret line="122" column="26" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -375,12 +338,12 @@
       <workItem from="1561510598430" duration="23843000" />
       <workItem from="1561601599997" duration="29747000" />
       <workItem from="1561692164847" duration="6233000" />
-      <workItem from="1561771020319" duration="3302000" />
+      <workItem from="1561771020319" duration="3608000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="318939000" />
+    <option name="totallyTimeSpent" value="319245000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -399,8 +362,8 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.57785237" visible="true" weight="0.44759208" />
-      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.42214766" side_tool="true" visible="true" weight="0.44759208" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.57785237" visible="true" weight="0.40934843" />
+      <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.42214766" side_tool="true" visible="true" weight="0.40934843" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32956153" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -631,13 +594,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/savePage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/bundle.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="17">
@@ -665,10 +621,17 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/savePage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-578">
+          <caret line="2" column="8" selection-start-line="2" selection-start-column="8" selection-end-line="2" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/track.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="121" column="23" selection-start-line="121" selection-start-column="23" selection-end-line="121" selection-end-column="23" />
+        <state relative-caret-position="165">
+          <caret line="122" column="26" selection-start-line="122" selection-start-column="26" selection-end-line="122" selection-end-column="26" />
         </state>
       </provider>
     </entry>

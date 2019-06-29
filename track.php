@@ -120,7 +120,7 @@ if ($err) {
 }*///require_once 'savePage.php';
 ?>
 <script  type="module"  >
-    import Mercury from "./node_modules/@postlight/mercury-parser";
+    import Mercury from '/@postlight/mercury-parser";
 
     const url='https://www.abc.net.au/news/2019-06-27/queensland-olympic-games-bid-just-got-easier/11257178';
     Mercury.parse(url).then(result => console.log(result));
