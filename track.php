@@ -9,7 +9,7 @@ $url='';
 $senNum = 0;
 $img='';
 $summary=array();
-
+$extract=array();
 if(!isset($_GET['url']))
 {  echo"No url";
     var_dump($_GET);
@@ -49,15 +49,17 @@ if(!isset($_GET['url']))
 
 
     $summary = $textapi->Summarize(array('url' => $url, 'sentences_number' => $senNum));
+    $summary= preg_replace('/\[[^\]]*]/', ' ', $summary->sentences);
     $_SESSION['summary']=$summary;
-    foreach ($summary->sentences as $sentence) {
+    foreach ($summary as $sentence) {
         echo '<br/>';
         echo '<strong>' . $senNum++ . '</strong> ' . ' <p>' . $sentence . '</p>';
     }
 if ($imgChk){
-    /*$extract = $textapi->Extract(array('url' => $url, 'best_image' => 'true'));
+    $extract = $textapi->Extract(array('url' => $url, 'best_image' => 'true'));
     $_SESSION['extract']=$extract;
-    var_dump($extract);*/
+    var_dump($extract);
+    echo $extract->image;
 
 }
 
@@ -117,12 +119,6 @@ if ($err) {
         echo"<script src='assets/scripts/load.js'></script>";
 
     }
-}*///require_once 'savePage.php';
-?>
-<script  type="module"  >
-    import Mercury from '/@postlight/mercury-parser";
-
-    const url='https://www.abc.net.au/news/2019-06-27/queensland-olympic-games-bid-just-got-easier/11257178';
-    Mercury.parse(url).then(result => console.log(result));
-</script>
+}*/
+require_once 'savePage.php';
 

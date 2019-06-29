@@ -18,7 +18,7 @@
  *   Vadim Voituk
  *   Antcs
  *
- * Version Rev. 1.9 (290)
+ * Version $Rev$
  */
 
 define('HDOM_TYPE_ELEMENT', 1);
@@ -42,7 +42,7 @@ define('HDOM_INFO_ENDSPACE', 7);
 defined('DEFAULT_TARGET_CHARSET') || define('DEFAULT_TARGET_CHARSET', 'UTF-8');
 defined('DEFAULT_BR_TEXT') || define('DEFAULT_BR_TEXT', "\r\n");
 defined('DEFAULT_SPAN_TEXT') || define('DEFAULT_SPAN_TEXT', ' ');
-defined('MAX_FILE_SIZE') || define('MAX_FILE_SIZE', 6000000);
+defined('MAX_FILE_SIZE') || define('MAX_FILE_SIZE', 600000);
 define('HDOM_SMARTY_AS_TEXT', 1);
 
 function file_get_html(
@@ -413,46 +413,97 @@ class simple_html_dom_node
 		return $ret;
 	}
 
-	function text()
+	/**
+	 * Returns true if the provided element is a block level element
+	 * @link https://www.w3resource.com/html/HTML-block-level-and-inline-elements.php
+	 */
+	protected function is_block_element($node)
 	{
-		if (isset($this->_[HDOM_INFO_INNER])) {
-			return $this->_[HDOM_INFO_INNER];
-		}
+		// todo: When we have the utility class this should be moved there
+		return in_array(strtolower($node->tag), array(
+			'p',
+			'h1', 'h2', 'h3', 'h4', 'h5', 'h6',
+			'ol', 'ul',
+			'pre',
+			'address',
+			'blockquote',
+			'dl',
+			'div',
+			'fieldset',
+			'form',
+			'hr',
+			'noscript',
+			'table'
+		));
+	}
 
-		switch ($this->nodetype) {
-			case HDOM_TYPE_TEXT: return $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
-			case HDOM_TYPE_COMMENT: return '';
-			case HDOM_TYPE_UNKNOWN: return '';
-		}
+	/**
+	 * Returns true if the provided element is an inline level element
+	 * @link https://www.w3resource.com/html/HTML-block-level-and-inline-elements.php
+	 */
+	protected function is_inline_element($node)
+	{
+		// todo: When we have the utility class this should be moved there
+		return in_array(strtolower($node->tag), array(
+			'b', 'big', 'i', 'small', 'tt',
+			'abbr', 'acronym', 'cite', 'code', 'dfn', 'em', 'kbd', 'strong', 'samp', 'var',
+			'a', 'bdo', 'br', 'img', 'map', 'object', 'q', 'script', 'span', 'sub', 'sup',
+			'button', 'input', 'label', 'select', 'textarea'
+		));
+	}
 
-		if (strcasecmp($this->tag, 'script') === 0) { return ''; }
-		if (strcasecmp($this->tag, 'style') === 0) { return ''; }
-
+	function text($trim = true)
+	{
 		$ret = '';
 
-		// In rare cases, (always node type 1 or HDOM_TYPE_ELEMENT - observed
-		// for some span tags, and some p tags) $this->nodes is set to NULL.
-		// NOTE: This indicates that there is a problem where it's set to NULL
-		// without a clear happening.
-		// WHY is this happening?
-		if (!is_null($this->nodes)) {
+		if (strcasecmp($this->tag, 'script') === 0) {
+			$ret = '';
+		} elseif (strcasecmp($this->tag, 'style') === 0) {
+			$ret = '';
+		} elseif (isset($this->_[HDOM_INFO_INNER])) {
+			$ret = $this->_[HDOM_INFO_INNER];
+		} elseif ($this->nodetype === HDOM_TYPE_TEXT) {
+			$ret = $this->dom->restore_noise($this->_[HDOM_INFO_TEXT]);
+		} elseif ($this->nodetype === HDOM_TYPE_COMMENT) {
+			$ret = '';
+		} elseif ($this->nodetype === HDOM_TYPE_UNKNOWN) {
+			$ret = '';
+		} elseif (is_null($this->nodes)) {
+			$ret = '';
+		} else {
 			foreach ($this->nodes as $n) {
-				// Start paragraph after a blank line
-				if ($n->tag === 'p') {
-					$ret = trim($ret) . "\n\n";
-				}
+				if ($this->is_block_element($n)) {
 
-				$ret .= $this->convert_text($n->text());
+					$block = ltrim($this->convert_text($n->text(false)));
 
-				// If this node is a span... add a space at the end of it so
-				// multiple spans don't run into each other.  This is plaintext
-				// after all.
-				if ($n->tag === 'span') {
-					$ret .= $this->dom->default_span_text;
+					if (empty($block))
+						continue;
+
+					$ret = rtrim($ret) . "\n\n" . $block;
+
+				} elseif ($this->is_inline_element($n)) {
+					// todo: <br> introduces code smell because no space but \n
+					if (strcasecmp($n->tag, 'br') === 0) {
+						$ret .= $this->dom->default_br_text ?: DEFAULT_BR_TEXT;
+					} else {
+						$inline = ltrim($this->convert_text($n->text(false)));
+
+						if (empty($inline))
+							continue;
+
+						$ret = $ret . $this->convert_text($n->text(false));
+					}
+				} else {
+					$ret .= $this->convert_text($n->text(false));
 				}
 			}
 		}
-		return $ret;
+
+		// Reduce whitespace at start/end to a single (or none) space
+		$ret = preg_replace('/[ \t\n\r\0\x0B\xC2\xA0]+$/', ' ', $ret);
+		$ret = preg_replace('/^[ \t\n\r\0\x0B\xC2\xA0]+/', ' ', $ret);
+
+		return $trim ? trim($ret, " \t\n\r\0\x0B\xC2\xA0") : $ret;
 	}
 
 	function xmltext()
@@ -581,8 +632,12 @@ class simple_html_dom_node
 
 			// Get list of target nodes
 			$nodes_start = $this->_[HDOM_INFO_BEGIN] + 1;
-			$nodes_count = $end - $nodes_start;
-			$nodes = array_slice($this->dom->nodes, $nodes_start, $nodes_count, true);
+
+			// remove() makes $this->dom->nodes non-contiguous; use what is left.
+			$nodes = array_intersect_key(
+				$this->dom->nodes,
+				array_flip(range($nodes_start, $end))
+			);
 		} elseif ($parent_cmd === '>') { // Child Combinator
 			$nodes = $this->children;
 		} elseif ($parent_cmd === '+'
@@ -635,7 +690,14 @@ class simple_html_dom_node
 			// Check if all class(es) exist
 			if ($pass && $class !== '' && is_array($class) && !empty($class)) {
 				if (isset($node->attr['class'])) {
-					$node_classes = explode(' ', $node->attr['class']);
+					// Apply the same rules for the pattern and attribute value
+					// Attribute values must not contain control characters other than space
+					// https://www.w3.org/TR/html/dom.html#text-content
+					// https://www.w3.org/TR/html/syntax.html#attribute-values
+					// https://www.w3.org/TR/xml/#AVNormalize
+					$node_classes = preg_replace("/[\r\n\t\s]+/u", ' ', $node->attr['class']);
+					$node_classes = trim($node_classes);
+					$node_classes = explode(' ', $node_classes);
 
 					if ($lowercase) {
 						$node_classes = array_map('strtolower', $node_classes);
@@ -782,6 +844,17 @@ class simple_html_dom_node
 			$pattern = strtolower($pattern);
 			$value = strtolower($value);
 		}
+
+		// Apply the same rules for the pattern and attribute value
+		// Attribute values must not contain control characters other than space
+		// https://www.w3.org/TR/html/dom.html#text-content
+		// https://www.w3.org/TR/html/syntax.html#attribute-values
+		// https://www.w3.org/TR/xml/#AVNormalize
+		$pattern = preg_replace("/[\r\n\t\s]+/u", ' ', $pattern);
+		$pattern = trim($pattern);
+
+		$value = preg_replace("/[\r\n\t\s]+/u", ' ', $value);
+		$value = trim($value);
 
 		switch ($exp) {
 			case '=':
@@ -1281,33 +1354,51 @@ class simple_html_dom_node
 
 	function removeChild($node)
 	{
+		foreach($node->children as $child) {
+			$node->removeChild($child);
+		}
+
+		// No need to re-index node->children because it is about to be removed!
+
+		foreach($node->nodes as $entity) {
+			$enidx = array_search($entity, $node->nodes, true);
+			$edidx = array_search($entity, $node->dom->nodes, true);
+
+			if ($enidx !== false) {
+				unset($node->nodes[$enidx]);
+			}
+
+			if ($edidx !== false) {
+				unset($node->dom->nodes[$edidx]);
+			}
+		}
+
+		// No need to re-index node->nodes because it is about to be removed!
+
 		$nidx = array_search($node, $this->nodes, true);
 		$cidx = array_search($node, $this->children, true);
 		$didx = array_search($node, $this->dom->nodes, true);
 
-		if ($nidx !== false && $cidx !== false && $didx !== false) {
-
-			foreach($node->children as $child) {
-				$node->removeChild($child);
-			}
-
-			foreach($node->nodes as $entity) {
-				$enidx = array_search($entity, $node->nodes, true);
-				$edidx = array_search($entity, $node->dom->nodes, true);
-
-				if ($enidx !== false && $edidx !== false) {
-					unset($node->nodes[$enidx]);
-					unset($node->dom->nodes[$edidx]);
-				}
-			}
-
+		if ($nidx !== false) {
 			unset($this->nodes[$nidx]);
-			unset($this->children[$cidx]);
-			unset($this->dom->nodes[$didx]);
-
-			$node->clear();
-
 		}
+
+		$this->nodes = array_values($this->nodes);
+
+		if ($cidx !== false) {
+			unset($this->children[$cidx]);
+		}
+
+		$this->children = array_values($this->children);
+
+		if ($didx !== false) {
+			unset($this->dom->nodes[$didx]);
+		}
+
+		// Do not re-index dom->nodes because nodes point to other nodes in the
+		// array explicitly!
+
+		$node->clear();
 	}
 
 	function getElementById($id)
@@ -1402,8 +1493,7 @@ class simple_html_dom
 	public $_charset = '';
 	public $_target_charset = '';
 
-	protected $default_br_text = '';
-
+	public $default_br_text = '';
 	public $default_span_text = '';
 
 	protected $self_closing_tags = array(
@@ -1507,10 +1597,12 @@ class simple_html_dom
 		$this->remove_noise("'<\s*script[^>]*[^/]>(.*?)<\s*/\s*script\s*>'is");
 		$this->remove_noise("'<\s*script\s*>(.*?)<\s*/\s*script\s*>'is");
 
-		// strip out the \r \n's if we are told to.
 		if ($stripRN) {
-			$this->doc = str_replace("\r", ' ', $this->doc);
-			$this->doc = str_replace("\n", ' ', $this->doc);
+			// Remove whitespace and newlines between tags
+			$this->doc = preg_replace('/\>([\t\s]*[\r\n]^[\t\s]*)\</m', '><', $this->doc);
+
+			// Remove whitespace and newlines in text
+			$this->doc = preg_replace('/([\t\s]*[\r\n]^[\t\s]*)/m', ' ', $this->doc);
 
 			// set the length of content since we have changed it.
 			$this->size = strlen($this->doc);
@@ -1533,10 +1625,11 @@ class simple_html_dom
 		}
 
 		// parsing
-		$this->parse();
+		$this->parse($stripRN);
 		// end
 		$this->root->_[HDOM_INFO_END] = $this->cursor;
 		$this->parse_charset();
+		$this->decode();
 
 		// make load function chainable
 		return $this;
@@ -1638,13 +1731,42 @@ class simple_html_dom
 		if ($this->size > 0) { $this->char = $this->doc[0]; }
 	}
 
-	protected function parse()
+	protected function decode()
+	{
+		foreach($this->nodes as $node) {
+			if (isset($node->_[HDOM_INFO_TEXT])) {
+				$node->_[HDOM_INFO_TEXT] = html_entity_decode(
+					$this->restore_noise($node->_[HDOM_INFO_TEXT]),
+					ENT_QUOTES | ENT_HTML5,
+					$this->_target_charset
+				);
+			}
+			if (isset($node->_[HDOM_INFO_INNER])) {
+				$node->_[HDOM_INFO_INNER] = html_entity_decode(
+					$this->restore_noise($node->_[HDOM_INFO_INNER]),
+					ENT_QUOTES | ENT_HTML5,
+					$this->_target_charset
+				);
+			}
+			if (isset($node->attr) && is_array($node->attr)) {
+				foreach($node->attr as $a => $v) {
+					$node->attr[$a] = html_entity_decode(
+						$v,
+						ENT_QUOTES | ENT_HTML5,
+						$this->_target_charset
+					);
+				}
+			}
+		}
+	}
+
+	protected function parse($trim = false)
 	{
 		while (true) {
 			// Read next tag if there is no text between current position and the
 			// next opening tag.
 			if (($s = $this->copy_until_char('<')) === '') {
-				if($this->read_tag()) {
+				if($this->read_tag($trim)) {
 					continue;
 				} else {
 					return true;
@@ -1656,6 +1778,24 @@ class simple_html_dom
 			++$this->cursor;
 			$node->_[HDOM_INFO_TEXT] = $s;
 			$this->link_nodes($node, false);
+
+			// Remove whitespace between nodes if the current node and the previous
+			// node have space between them and either of the nodes is not text
+			$nodes = array_values($this->nodes);
+			if ($trim && count($nodes) >= 2) {
+				$current  = $nodes[count($nodes) - 1];
+				$previous = $nodes[count($nodes) - 2];
+
+				if ($current->tag !== 'text' xor $previous->tag !== 'text')
+				{
+					$element = ($current->tag === 'text') ? $current : $previous;
+
+					if ($element->tag === 'text' && trim($element) === '')
+					{
+						$element->remove();
+					}
+				}
+			}
 		}
 	}
 
@@ -1797,7 +1937,7 @@ class simple_html_dom
 		return $this->_charset = $charset;
 	}
 
-	protected function read_tag()
+	protected function read_tag($trim)
 	{
 		// Set end position if no further tags found
 		if ($this->char !== '<') {
@@ -1808,16 +1948,21 @@ class simple_html_dom
 		$begin_tag_pos = $this->pos;
 		$this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
 
+		if ($trim)
+			$this->skip($this->token_blank); // space between open tag and tag name (not allowed by specification) https://dev.w3.org/html5/pf-summary/syntax.html#start-tags
+
 		// end tag
 		if ($this->char === '/') {
 			$this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
 
 			// Skip whitespace in end tags (i.e. in "</   html>")
-			$this->skip($this->token_blank);
+			if ($trim)
+				$this->skip($this->token_blank);
+
 			$tag = $this->copy_until_char('>');
 
 			// Skip attributes in end tags
-			if (($pos = strpos($tag, ' ')) !== false) {
+			if ($trim && ($pos = strpos($tag, ' ')) !== false) {
 				$tag = substr($tag, 0, $pos);
 			}
 
@@ -2028,7 +2173,7 @@ class simple_html_dom
 
 				if ($this->char === '=') { // attribute with value
 					$this->char = (++$this->pos < $this->size) ? $this->doc[$this->pos] : null; // next
-					$this->parse_attr($node, $name, $space); // get attribute value
+					$this->parse_attr($node, $name, $space, $trim); // get attribute value
 				} else {
 					//no value attr: nowrap, checked selected...
 					$node->_[HDOM_INFO_QUOTE][] = HDOM_QUOTE_NO;
@@ -2036,7 +2181,7 @@ class simple_html_dom
 					if ($this->char != '>') { $this->char = $this->doc[--$this->pos]; } // prev
 				}
 
-				$node->_[HDOM_INFO_SPACE][] = $space;
+				$node->_[HDOM_INFO_SPACE][] = ($trim) ? array(' ', '', '') : $space; // Space before attribute and around equal sign
 
 				// prepare for next attribute
 				$space = array(
@@ -2050,11 +2195,14 @@ class simple_html_dom
 		} while ($this->char !== '>' && $this->char !== '/'); // go until the tag ended
 
 		$this->link_nodes($node, true);
-		$node->_[HDOM_INFO_ENDSPACE] = $space[0];
+		$node->_[HDOM_INFO_ENDSPACE] = ($trim) ? '' : $space[0]; // Space after last attribute before closing the tag
+
+		$rest = $this->copy_until_char('>');
+		$rest = ($trim) ? trim($rest) : $rest;
 
 		// handle empty tags (i.e. "<div/>")
-		if ($this->copy_until_char('>') === '/') {
-			$node->_[HDOM_INFO_ENDSPACE] .= '/';
+		if (trim($rest) === '/') {
+			$node->_[HDOM_INFO_ENDSPACE] .= $rest;
 			$node->_[HDOM_INFO_END] = 0;
 		} else {
 			// reset parent
@@ -2075,7 +2223,7 @@ class simple_html_dom
 		return true;
 	}
 
-	protected function parse_attr($node, $name, &$space)
+	protected function parse_attr($node, $name, &$space, $trim)
 	{
 		$is_duplicate = isset($node->attr[$name]);
 
@@ -2102,14 +2250,12 @@ class simple_html_dom
 
 		$value = $this->restore_noise($value);
 
-		// PaperG: Attributes should not have \r or \n in them, that counts as
-		// html whitespace.
-		$value = str_replace("\r", '', $value);
-		$value = str_replace("\n", '', $value);
-
-		// PaperG: If this is a "class" selector, lets get rid of the preceeding
-		// and trailing space since some people leave it in the multi class case.
-		if ($name === 'class') {
+		if ($trim) {
+			// Attribute values must not contain control characters other than space
+			// https://www.w3.org/TR/html/dom.html#text-content
+			// https://www.w3.org/TR/html/syntax.html#attribute-values
+			// https://www.w3.org/TR/xml/#AVNormalize
+			$value = preg_replace("/[\r\n\t\s]+/u", ' ', $value);
 			$value = trim($value);
 		}
 

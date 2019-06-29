@@ -47,7 +47,7 @@ function Search(term, direction)
         _pageNumber = 1;
     }
 
-    var url = "https://www.googleapis.com/customsearch/v1?key="
+    var url = "https://www.googleapis.com/customsearch/v1/siterestrict?key="
         + apiKey + "&num=10&cx=" + csKey + "&start=" + startIndex + "&q=" + term + "&callback=?";
     console.log(term);
 
