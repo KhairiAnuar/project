@@ -1,17 +1,17 @@
 [
     {
         "name": "aylien/textapi",
-        "version": "v0.6.0",
-        "version_normalized": "0.6.0.0",
+        "version": "v0.8.0",
+        "version_normalized": "0.8.0.0",
         "source": {
             "type": "git",
             "url": "https://github.com/AYLIEN/aylien_textapi_php.git",
-            "reference": "ce4a028836836f3faeeacc7fabd64da6b3184a99"
+            "reference": "a7b78b4d964a275e9e4827a918085b0526caff36"
         },
         "dist": {
             "type": "zip",
-            "url": "https://api.github.com/repos/AYLIEN/aylien_textapi_php/zipball/ce4a028836836f3faeeacc7fabd64da6b3184a99",
-            "reference": "ce4a028836836f3faeeacc7fabd64da6b3184a99",
+            "url": "https://api.github.com/repos/AYLIEN/aylien_textapi_php/zipball/a7b78b4d964a275e9e4827a918085b0526caff36",
+            "reference": "a7b78b4d964a275e9e4827a918085b0526caff36",
             "shasum": ""
         },
         "require": {
@@ -20,7 +20,7 @@
         "require-dev": {
             "phpunit/phpunit": "4.3.*"
         },
-        "time": "2016-04-27T11:08:01+00:00",
+        "time": "2018-08-21T07:57:08+00:00",
         "type": "library",
         "installation-source": "dist",
         "autoload": {
@@ -34,8 +34,8 @@
         ],
         "authors": [
             {
-                "name": "Amir Mohammad Saeid",
-                "email": "amir@aylien.com"
+                "name": "Aylien Inc.",
+                "email": "support@aylien.com"
             }
         ],
         "description": "Client library for AYLIEN Text API",

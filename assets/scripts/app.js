@@ -6,6 +6,10 @@ function hndlr(response) {
         document.getElementById("content").innerHTML += "URL=<a href=&quot" + item.link +"&quot>" + item.displayLink + "</a>";
 
     }
+}
+
+function getCheckBoxImg(){
+
 
 }
 
@@ -43,8 +47,8 @@ function Search(term, direction)
         _pageNumber = 1;
     }
 
-    var url = "https://www.googleapis.com/customsearch/v1?key="
-        + mGoogleApiKey + "&num=10&cx=" + mGoogleCustomSearchKey + "&start=" + startIndex + "&q=" + term + "&callback=?";
+    var url = "https://www.googleapis.com/customsearch/v1/siterestrict?key="
+        + apiKey + "&num=10&cx=" + csKey + "&start=" + startIndex + "&q=" + term + "&callback=?";
     console.log(term);
 
     console.log(url);
@@ -104,39 +108,23 @@ function SearchCompleted(response)
         var item = response.items[i];
         var title = item.htmlTitle;
 
-        var icon = "class='cmisc' title='Other page'";
-
-        title = title.replace("- Peter Hahndorf", "");
-        title = title.replace("- Forever Breathes The Lonely Word", "");
-        title = title.replace("Forever Breathes The Lonely Word - ", "");
-
-        if (item.link.indexOf("/tech/") > -1)
-        {
-            icon = "class='ctech' title='Tech Stuff'";
-        }
-
-        if (item.link.indexOf("/trip/") > -1)
-        {
-            icon = "class='ctravel' title='Travel'";
-        }
-
-        if (item.link.indexOf("/blog/") > -1)
-        {
-            icon = "class='cblog' title='Technical blog'";
-        }
-
-        html += "<div><div class='hcHead2'> <a " + icon + " href='" + item.link + "' onclick=track('"+ item.link +"'); value='"+ item.link +"'>"+ title + "</a></div>";
-        html += item.htmlSnippet + "</div>";
+        html += "<div><br> <div class='hcHead2'> <a href='" + item.link + "' onclick=track('"+ item.link +"')>"+ title + "</a>" +
+            "<div class='linkResults'>"+item.displayLink+"</div></div>";
+        html += item.htmlSnippet + "</div><br>";
+        console.log(item.link);
     }
-
+    $('#logo').hide();
     $("#output").html(html);
 
 
 
 }
 
+
 function track(url) {
-    var data=encodeURIComponent(url);
+    //var data=encodeURIComponent(url);
+    var checkBoxImage=$('#checkBoxImg').val();
+    var sentNum=$('#sentNum').val();
     event.preventDefault();
 /*
     $.ajax({
@@ -153,9 +141,8 @@ function track(url) {
 
     });*/
 
-
     var encodedUrl=encodeURIComponent(url);
-    window.location ="http://localhost/project/track.php?url="+encodedUrl;
+    window.location="http://localhost/project/track.php?img="+checkBoxImage+"&sentence="+sentNum+"&url="+encodedUrl;
 /*    var xmlhttp = new XMLHttpRequest();
     console.log("track function URL:" + ajaxUrl);
 
