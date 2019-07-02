@@ -160,6 +160,6 @@ if (!$html) {
 
 
 file_put_contents('output.html', $outhtml);
-//header('LOCATION: output.html');
+header('LOCATION: output.html');
 exit;
 

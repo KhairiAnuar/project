@@ -108,8 +108,9 @@ function SearchCompleted(response)
         var item = response.items[i];
         var title = item.htmlTitle;
 
-        html += "<div><div class='hcHead2'> <a href='" + item.link + "' onclick=track('"+ item.link +"')>"+ title + "</a></div>";
-        html += item.htmlSnippet + "</div>";
+        html += "<div><br> <div class='hcHead2'> <a href='" + item.link + "' onclick=track('"+ item.link +"')>"+ title + "</a>" +
+            "<div class='linkResults'>"+item.displayLink+"</div></div>";
+        html += item.htmlSnippet + "</div><br>";
         console.log(item.link);
     }
     $('#logo').hide();
