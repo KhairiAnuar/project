@@ -2,16 +2,10 @@
 function hndlr(response) {
     for (var i = 0; i < response.items.length; i++) {
         var item = response.items[i];
-
         document.getElementById("content").innerHTML += "URL=<a href=&quot" + item.link +"&quot>" + item.displayLink + "</a>";
-
     }
 }
 
-function getCheckBoxImg(){
-
-
-}
 
 // https://peter.hahndorf.eu/blog/UsingTheGoogleCustomSearchAPIV.html
 //import {}from 'bundle.js';
@@ -46,7 +40,7 @@ function Search(term, direction)
         startIndex = 1;
         _pageNumber = 1;
     }
-
+    //http://suggestqueries.google.com/complete/search?client=chrome&q=YOURQUERY&callback=callback
     var url = "https://www.googleapis.com/customsearch/v1/siterestrict?key="
         + apiKey + "&num=10&cx=" + csKey + "&start=" + startIndex + "&q=" + term + "&callback=?";
     console.log(term);
@@ -109,7 +103,7 @@ function SearchCompleted(response)
         var title = item.htmlTitle;
 
         html += "<div><br> <div class='hcHead2'> <a href='" + item.link + "' onclick=track('"+ item.link +"')>"+ title + "</a>" +
-            "<div class='linkResults'>"+item.displayLink+"</div></div>";
+            "<div style='color:#006621;'>"+item.displayLink+"</div></div>";
         html += item.htmlSnippet + "</div><br>";
         console.log(item.link);
     }
@@ -117,77 +111,17 @@ function SearchCompleted(response)
     $("#output").html(html);
 
 
-
 }
-
 
 function track(url) {
     //var data=encodeURIComponent(url);
-    var checkBoxImage=$('#checkBoxImg').val();
+    var toggleImg=$('#toggleImg').val();
     var sentNum=$('#sentNum').val();
     event.preventDefault();
-/*
-    $.ajax({
-        type: "GET",
-        data_type:"html",
-        contentType : "text/html; charset=utf-8",
-        url: "http://localhost/project/track.php",
-        data:"url="+encodeURIComponent(url),
-        success:  function(result){
-        console.log(result);
-            ready();
 
-        }
-
-    });*/
 
     var encodedUrl=encodeURIComponent(url);
-    window.location="http://localhost/project/track.php?img="+checkBoxImage+"&sentence="+sentNum+"&url="+encodedUrl;
-/*    var xmlhttp = new XMLHttpRequest();
-    console.log("track function URL:" + ajaxUrl);
-
-   xmlhttp.onreadystatechange=function () {
-       if (xmlhttp.readyState == 4) {
-           if ( xmlhttp.status == 200){
-               //document.getElementById("outputResult");
-               alert("success");
-           }
-           else if(xmlhttp.status==0){
-               alert("failed");
-           }
-       }
-   }
-     xmlhttp.open("GET", "track.php?url="+ajaxUrl,true);
-        xmlhttp.setRequestHeader("Content-Type", "application/json");
-        xmlhttp.send();
-        console.log("AJAX URL"+ajaxUrl);
-
-*/
-
-}
-
-/*fetch(fetchURL, {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(query)
-})
-    .then(r => r.json())
-    .then(answer => {
-        answer.sentences.forEach(function(sentence, idx) {
-            var newLi = document.createElement('li');
-            newLi.id = `sentence-${idx}`;
-            newLi.innerHTML = sentence;
-            newUl.appendChild(newLi);
-        })
-    })
-    .catch(err => {
-        console.error('ERROR', err)
-    });*/
-
-
-function ready(url) {
-      //  document.getElementById("output").html=xmlhttp.responseText;
-
+    window.location="track.php?img="+toggleImg+"&sentence="+sentNum+"&url="+encodedUrl;
 
 }
 

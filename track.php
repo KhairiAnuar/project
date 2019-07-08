@@ -3,46 +3,36 @@ require_once 'vendor/autoload.php';
 require_once 'vendor/mashape/unirest-php/src/Unirest.php';
 
 
-var_dump($_GET);
+
 //printf("URL:");var_dump($_GET['url']);
 $url='';
-$senNum = 0;
+$senNum = 5;
 $img='';
 $summary=array();
 $extract=array();
-if(!isset($_GET['url']))
-{  echo"No url";
+var_dump($_GET['img']);
+if(!isset($_GET['url'])) {
+    echo"No url";
     var_dump($_GET);
 
     }else {
-    $url = urldecode($_GET['url']);
-    $senChk= isset($_GET['sentence']) ? true : false;
-    $imgChk=isset($_GET['img'])?true:false;
-    if($senChk){
-        $senNum=$_GET['sentence'];
-    }
+        $url = urldecode($_GET['url']);
+        if (isset($_GET['img'])){
+            $imgChk=true;
+        }else {
+            $imgChk=false;
+        }
+        if(empty($_GET['sentence'])){
 
+            $senNum=5;
+        }else {
 
-    // echo " DECODED URL:";var_dump($url);echo "\n";
+          $senNum= intval($_GET['sentence']);
 
-
-    /* //https://rapidapi.com/UnFound/api/adaptive-text-summarization
-     $response = Unirest\Request::post("https://unfound-text-summarization-v1.p.rapidapi.com/summarization",
-         array(
-             "X-RapidAPI-Host" => "unfound-text-summarization-v1.p.rapidapi.com",
-             "X-RapidAPI-Key" => "a06a6a0a8emsh9b48b465f420022p19b84cjsnf6fcb4b13432",
-             "Content-Type" => "application/url"
-         ),
-         array(
-
-             '{\"input_data\":\"https://www.tesla.com/elon-musk\",\"input_type\":\"url\",\"summary_type\":\"general_summary\",\"N\":3}'
-         )
-     );
-    */
-
+        }
+        var_dump($senNum);
 
     //--------AYLIEN https://docs.aylien.com/textapi/endpoints/#summarization
-
 
     $textapi = new AYLIEN\TextAPI("4ac86380", "ebef1d17efdc2147f91b3a1b940d2bed");
    // $ratelimit=$textapi->getRateLimits();
@@ -51,15 +41,21 @@ if(!isset($_GET['url']))
     $summary = $textapi->Summarize(array('url' => $url, 'sentences_number' => $senNum));
     $summary= preg_replace('/\[[^\]]*]/', ' ', $summary->sentences);
     $_SESSION['summary']=$summary;
-    foreach ($summary as $sentence) {
-        echo '<br/>';
+    /* foreach ($summary as $sentence) {
+       echo '<br/>';
         echo '<strong>' . $senNum++ . '</strong> ' . ' <p>' . $sentence . '</p>';
-    }
+
+    }*/
 if ($imgChk){
     $extract = $textapi->Extract(array('url' => $url, 'best_image' => 'true'));
     $_SESSION['extract']=$extract;
-    var_dump($extract);
-    echo $extract->image;
+
+
+
+}else{
+    $extract ='';
+    $_SESSION['extract']=$extract;
+
 
 }
 
