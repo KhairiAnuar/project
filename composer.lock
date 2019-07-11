@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "6ce3c17d95575686b60f1c222b5f58c8",
+    "content-hash": "2e5063de5975cf77fd697d711178f095",
     "packages": [
         {
             "name": "aylien/textapi",
@@ -101,7 +101,9 @@
     "prefer-lowest": false,
     "platform": {
         "ext-json": "*",
-        "ext-curl": "*"
+        "ext-curl": "*",
+        "ext-dom": "*",
+        "ext-mbstring": "^7.3"
     },
     "platform-dev": []
 }
