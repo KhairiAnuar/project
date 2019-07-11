@@ -76,3 +76,33 @@ input:checked + .slider:before {
 .slider.round:before {
     border-radius: 50%;
 }
+
+.resultLinks, .resultLinks:hover{
+    color: #006621;
+    text-decoration: none;
+}
+.resultTitle{
+    font-size: 17px;
+    line-height: 1.33;
+
+    margin-bottom: 0px;
+}
+.resultTitle,.resultTitle a,.resultTitle a:link,.resultTitle a:active,.resultTitle a:hover {
+    color: #1906A7;
+}
+#searchBox{
+    margin:20px 20px 3% 1%;
+}
+#output{
+    margin:10px 10px 10px 5%;
+
+}
+#output p{
+    font-size:small;
+}
+#output img{
+    width: 130px;
+}
+#searchBox button ,#searchBox input {
+    margin-left: 10px;
+}
