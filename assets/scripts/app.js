@@ -47,6 +47,7 @@ function Search(term, direction)
 
     console.log(url);
     $.getJSON(url, SearchCompleted);
+
 }
 
 function SearchCompleted(response)

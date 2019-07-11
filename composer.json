@@ -2,7 +2,9 @@
   "require": {
     "aylien/textapi": "^0.8.0",
     "mashape/unirest-php": "^3.0",
-    "ext-json": "*"
+    "ext-json": "*",
+    "ext-curl": "*",
+    "ext-dom": "*"
   },
   "autoload": {
     "psr-0": {"Unirest": "lib/"}

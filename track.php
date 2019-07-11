@@ -10,7 +10,7 @@ $senNum = 5;
 $img='';
 $summary=array();
 $extract=array();
-var_dump($_GET['img']);
+
 if(!isset($_GET['url'])) {
     echo"No url";
     var_dump($_GET);
@@ -30,7 +30,7 @@ if(!isset($_GET['url'])) {
           $senNum= intval($_GET['sentence']);
 
         }
-        var_dump($senNum);
+
 
     //--------AYLIEN https://docs.aylien.com/textapi/endpoints/#summarization
 
