@@ -115,6 +115,8 @@ class GoogleCustomSearch
                     'snippet' => $result->snippet,
                     'htmlSnippet' => $result->htmlSnippet,
                     'link' => $result->link,
+                    'htmlFormattedUrl'=>$result->htmlFormattedUrl,
+                    'displayLink'=>$result->displayLink,
                     'image' => isset($result->pagemap->cse_image) ? $result->pagemap->cse_image[0]->src : '',
                     'thumbnail' => isset($result->pagemap->cse_thumbnail) ? $result->pagemap->cse_thumbnail[0]->src : '',
                 ];

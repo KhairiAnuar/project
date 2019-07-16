@@ -11,12 +11,14 @@ $img='';
 $summary=array();
 $extract=array();
 
+
 if(!isset($_GET['url'])) {
     echo"No url";
     var_dump($_GET);
 
     }else {
         $url = urldecode($_GET['url']);
+
         if (isset($_GET['img'])){
             $imgChk=true;
         }else {
@@ -30,17 +32,27 @@ if(!isset($_GET['url'])) {
           $senNum= intval($_GET['sentence']);
 
         }
+        var_dump($senNum);
+    $ch = curl_init("http://api.smmry.com/&SM_API_KEY=65E77D6699&SM_LENGTH=".$senNum."&SM_QUESTION_AVOID&SM_URL=".$url);
+    curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+    curl_setopt($ch, CURLOPT_CONNECTTIMEOUT,20);
+    curl_setopt($ch, CURLOPT_TIMEOUT,20);
+    $return = json_decode(curl_exec($ch), true);
+    curl_close($ch);
+    $return['sm_api_content']= preg_replace('/\[[^\]]*]/', ' ', $return['sm_api_content']);
+    $summary =explode('.', $return['sm_api_content']);
 
-
+    var_dump($summary);
     //--------AYLIEN https://docs.aylien.com/textapi/endpoints/#summarization
 
     $textapi = new AYLIEN\TextAPI("4ac86380", "ebef1d17efdc2147f91b3a1b940d2bed");
    // $ratelimit=$textapi->getRateLimits();
 
-
+/*
     $summary = $textapi->Summarize(array('url' => $url, 'sentences_number' => $senNum));
     $summary= preg_replace('/\[[^\]]*]/', ' ', $summary->sentences);
-    $_SESSION['summary']=$summary;
+    $_SESSION['summary']=$summary;*/
     /* foreach ($summary as $sentence) {
        echo '<br/>';
         echo '<strong>' . $senNum++ . '</strong> ' . ' <p>' . $sentence . '</p>';
