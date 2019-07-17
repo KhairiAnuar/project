@@ -11,7 +11,9 @@ $nextIndex = 0;
 $resultsPerPage = 10;
 $pageNumber = 1;
 ?>
-    <!DOCTYPE html><html lang="en"> <head>
+<!DOCTYPE html>
+ <html lang="en">
+    <head>
     <title>MyGoogle Search</title>
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -19,39 +21,51 @@ $pageNumber = 1;
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="//code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="assets/scripts/app.js"></script>
-
-    </head>   <div class="container-fluid">
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#summaryBtn").click(function(){
+                $("#summaryDiv").toggle("slow");
+            });
+        });
+    </script>
+    </head>
+<div class="container-fluid">
     <div class="row">
         <div class="col-12" id="searchBox">
             <form action="search.php" method="get">
                 <img src="assets/images/mygoogle.png" id="logo" style="width:120px" alt="Logo Website">
-                <div class="d-inline-flex queryInput">
-                    <input type="text" class="form-control w-100" value="<?php echo isset($_GET['query']) ? $_GET['query'] : '' ?>"id="query" name="query" aria-label="input search query"/>
+                <div class="d-inline-flex queryDiv">
+                    <input type="text" class="form-control w-100 queryInput" value="<?php echo isset($_GET['query']) ? $_GET['query'] : '' ?>" id="query" name="query" aria-label="input search query"/>
                     <div class="input-group-append">
-                        <span class="input-group-text"><i class="fas fa-search"></i></span>
+                        <span class="input-group-text"><i class="fas fa-search"> </i></span>
                     </div>
                     <input id="btnSearch" class="btn btn-secondary " value="Search" type="submit">
                 </div>
+                <button class="btn btn-light" id="summaryBtn" onclick="return false;"> Summary options</button>
         </div></div>
 
 
 <?php
 if(empty($_GET['query'])){
     $pageErr='No matching pages';
-    echo $pageErr;
+    ?>
+    <div class="row searchResult" id="output">
+    <div class="col-7">
+        <h5>Please enter keyword</h5>
+    </div>
+    </div>
+<?php
 }else{
     $term=$_GET['query'];
     if(!empty($_GET['pageno'])){
-        $pageNumber=$_GET['pageno'];
-    }
-    //Search($term,0);
+        $pageNumber=intval($_GET['pageno']);
 
+    }
 
     $searchresultsObject = $search->search($term,$pageNumber,10);
-    $i=0;
     ?>
         <div class="row searchResult" id="output">
             <div class="col-7">
@@ -59,7 +73,7 @@ if(empty($_GET['query'])){
 
             foreach ($searchresultsObject->results as $searchresults) {
                 $encodedUrl=urlencode($searchresults->link);
-                echo "<div class='searchResultRow'><h3 class='resultTitle'><a  href=track.php?img=on&sentence=5&url=".$encodedUrl. ">" . $searchresults->title . "</a></h3>" . "<a class='resultLinks' onclick='track(".$searchresults->link.")' href=" . $searchresults->link . ">" . $searchresults->htmlFormattedUrl. "</a>" . nl2br("\n");
+                echo "<div class='searchResultRow'><h3 class='resultTitle'><a  href=track.php?img=on&sentence=10&url=".$encodedUrl. ">" . $searchresults->title . "</a></h3>" . "<a class='resultLinks' onclick='track(".$searchresults->link.")' href=" . $searchresults->link . ">" . $searchresults->htmlFormattedUrl. "</a>" . nl2br("\n");
                 $searchresults->snippet = preg_replace('!\s+!', ' ', $searchresults->htmlSnippet);
                 if(!empty($searchresults->thumbnail)){
                     echo "<div class='d-flex flex-row'><img src='".$searchresults->thumbnail."' alt='website thumbnail image'><p>".$searchresults->snippet."</p></div></div>";
@@ -72,8 +86,8 @@ if(empty($_GET['query'])){
             } ?>
             </div>
 
-            <div id="summaryDiv" class="col-4">
-                <div  class="card">
+            <div  class="col-4">
+                <div id="summaryDiv" class="card">
                     <div class="card-header">
                         <h5 class="card-title">Summary Settings</h5>
                     </div>
@@ -94,152 +108,64 @@ if(empty($_GET['query'])){
                 </div>
             </div>
         </div>
-
-    </div>
-<div>
-    <a href="" id="lnkPrev"  onmousedown="prev()" title="Display previous result page" >Previous</a>
-    <span id="lblPageNumber"> </span>
-    <a href="" id="lnkNext" onmousedown="next()" title="Display next result page" >Next</a>
-</div>
-    <script type="text/javascript">
-        function track(url) {
-            //var data=encodeURIComponent(url);
-            var toggleImg=$('#toggleImg').val();
-            var sentNum=$('#sentNum').val();
-            event.preventDefault();
-            var encodedUrl=encodeURIComponent(url);
-            window.location="track.php?img="+toggleImg+"&sentence="+sentNum+"&url="+encodedUrl;
-
-        }
-
-
-
-        function prev() {
-
-            var requestPage=parseInt(<?php echo json_encode($pageNumber)?>,10);
-            requestPage=requestPage-1;
-            console.log(requestPage);
-            window.location.href='search.php?query='+document.getElementById("query").value+"&pageno="+requestPage;
-        }
-        function next() {
-            var requestPage=parseInt(<?php echo json_encode($pageNumber)?>,10);
-            requestPage=1+requestPage;
-            console.log(requestPage);
-            window.location.href='search.php?query='+document.getElementById("query").value+"&pageno="+requestPage;
-        }
-        $(document).ready(function() {
-            var requestPage=parseInt(<?php echo json_encode($pageNumber)?>,10);
-            document.getElementById('lblPageNumber').innerHTML=requestPage;
-            console.log(requestPage);
-            if(requestPage<=1){
-                document.getElementById("lnkPrev").style.display='none';
-            }else{document.getElementById("lnkPrev").style.display='inline'; }
-        });
-
-
-    </script>
-
-    </html>
-
     <?php
-
-
-}
-
-
-
-    function Search($term, $direction)
-    {
-        global $prevIndex,$pageNumber,$nextIndex,$apiKey,$csKey;
-        $startIndex = 1;
-
-        if ($direction === -1)
-        {
-            $startIndex = $prevIndex;
-            $pageNumber--;
+    $total_pages=$searchresultsObject->totalResults;
+    $adjacents=2;
+    //Here we generates the range of the page numbers which will display.
+    if($total_pages <= (1+($adjacents * 2))) {
+        $start = 1;
+        $end   = $total_pages;
+    } else {
+        if(($pageNumber - $adjacents) > 1) {
+            if(($pageNumber + $adjacents) < $total_pages) {
+                $start = ($pageNumber - $adjacents);
+                $end   = ($pageNumber + $adjacents);
+            } else {
+                $start = ($total_pages - (1+($adjacents*2)));
+                $end   = $total_pages;
+            }
+        } else {
+            $start = 1;
+            $end   = (1+($adjacents * 2));
         }
-        if ($direction === 1)
-        {
-            $startIndex = $nextIndex;
-            $pageNumber++;
-        }
-        if ($direction === 0)
-        {
-            $startIndex = 1;
-            $pageNumber = 1;
-        }
-
     }
 
+
+    if( $total_pages > 1) { ?>
+        <ul class="pagination justify-content-center">
+            <!-- Link of the first page -->
+            <li class='page-item <?php ($pageNumber <= 1 ? print 'disabled' : '')?>'>
+                <a class='page-link' href='search.php?query=<?php echo $term ?>&pageno=1'><<</a>
+            </li>
+            <!-- Link of the previous page -->
+            <li class='page-item <?php ($pageNumber <= 1 ? print 'disabled' : '')?>'>
+                <a class='page-link' href='search.php?query=<?php echo $term ?>&pageno=<?php ($pageNumber>1 ? print($pageNumber-1) : print 1)?>'><</a>
+            </li>
+            <!-- Links of the pages with page number -->
+            <?php for($i=$start; $i<=$end; $i++) { ?>
+                <li class='page-item <?php ($i == $pageNumber ? print 'active' : '')?>'>
+                    <a class='page-link' href='search.php?query=<?php echo $term ?>&pageno=<?php echo $i;?>'><?php echo $i;?></a>
+                </li>
+            <?php } ?>
+            <!-- Link of the next page -->
+            <li class='page-item <?php ($pageNumber >= $total_pages ? print 'disabled' : '')?>'>
+
+                <a class='page-link' href='search.php?query=<?php echo $term ?>&pageno=<?php ($pageNumber < $total_pages ? print($pageNumber+1) : print $total_pages)?>'>></a>
+            </li>
+            <!-- Link of the last page -->
+            <li class='page-item <?php ($pageNumber >= $total_pages ? print 'disabled' : '')?>'>
+                <a class='page-link' href='search.php?query=<?php echo $term ?>&pageno=<?php echo $total_pages;?>'>>></a>
+            </li>
+        </ul>
+    <?php } ?>
+    </div>
+ </html>
+    <?php
+    }
 
 /*
-$doc =new DOMDocument();
-function SearchCompleted($response)
-{
-    $html = "";
-    ("#searchResult").html("");
-
-    if (response.items == null)
-    {
-        $("#searchResult").html("No matching pages found");
-        return;
-    }
-
-    if (response.items.length === 0)
-    {
-        $("#searchResult").html("No matching pages found");
-        return;
-    }
-
-    $("#searchResult").html(response.queries.request[0].totalResults + " pages found");
-
-    if (response.queries.nextPage != null)
-    {
-        _nextIndex = response.queries.nextPage[0].startIndex;
-        $("#lnkNext").show();
-    }
-    else
-    {
-        $("#lnkNext").hide();
-    }
-
-    if (response.queries.previousPage != null)
-    {
-        _prevIndex = response.queries.previousPage[0].startIndex;
-        $("#lnkPrev").show();
-    }
-    else
-    {
-        $("#lnkPrev").hide();
-    }
-
-    if (response.queries.request[0].totalResults > _resultsPerPage)
-    {
-        $("#lblPageNumber").show().html(_pageNumber);
-    }
-    else
-    {
-        $("#lblPageNumber").hide();
-    }
-
-    for (var i = 0; i < response.items.length; i++)
-    {
-        var item = response.items[i];
-        var title = item.htmlTitle;
-
-        html += "<div><br> <div class='hcHead2'> <a href='" + item.link + "' onclick=track('"+ item.link +"')>"+ title + "</a>" +
-            "<div style='color:#006621;'>"+item.displayLink+"</div></div>";
-        html += item.htmlSnippet + "</div><br>";
-        console.log(item.link);
-    }
-    $('#logo').hide();
-    $("#output").html(html);
-
-
-}
+ * pagination logic http://www.mitrajit.com/bootstrap-pagination-in-php-and-mysql/
 */
-
-
 
 
 

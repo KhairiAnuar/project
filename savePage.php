@@ -11,6 +11,9 @@ $contentonly = true;
 $allContent=false;
 $keepjs = false;
 $compress = true;
+$splitsum1=array_slice($summary,0,3);
+$splitsum2=array_slice($summary,4,1);
+$splitsum3=array_slice($summary,5);
 # include the class
 require 'assets/savePage/htmlSaveComplete.php';
 
@@ -48,8 +51,8 @@ if (strpos( $url, 'wiki')) {
 
         if(!empty($extract->image)) {
             $sumhtml->find('style',0)->innertext .='.block {
-    text-decoration: none;    width: 200px;    height: 272px;   background:red;border: 0;    display: block;}
-.block h3 { color: black;}';
+           text-decoration: none;    width: 200px;    height: 272px;   background:red;border: 0;    display: block;}
+          .block h3 { color: black;}';
             $sumhtml->find('div[class=mw-parser-output]', 0)->innertext = '<img src="' . $extract->image . '" width=30% height=auto alt="hero image"><p></p><p>' . implode('</p><p>', $summary) . '</p>';
         }else{
             $sumhtml->find('div[class=mw-parser-output]', 0)->innertext = '<p>' . implode('</p><p>', $summary) . '</p>';
@@ -64,13 +67,16 @@ if (strpos( $url, 'wiki')) {
     }
 }
 else if (strpos($url, 'abc')){
+    $curIdx1=5;$curIdx2=5; $idx1=5;$idx2=5;
     if(!empty($sumhtml)){
 
-        $sumhtml->find('head',0)->innertext .='<link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
-        $sumhtml->find('style',0)->innertext .='.c25r h4{
-        
-        }';
+        $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
+
+        $sumhtml->find('style',0)->innertext .='.collapsible {background-color: white;cursor: pointer;border: none;text-align: left;outline: none;
+}.active, .collapsible:hover {background-color: #5555550d;}.collapsible:after {content: \'\002B\';font-weight: bold;float: right;margin-left: 5px;}.active:after {content: "\2212";
+}.content {padding: 0 18px;max-height: 0;overflow: hidden;transition: max-height 0.2s ease-out;background-color: #f1f1f1;}';
+        $sumhtml->find('#abcFooter',0)->innertext .='<script>var coll = document.getElementsByClassName("collapsible");var i;for (i = 0; i < coll.length; i++){coll[i].addEventListener("click", function() {this.classList.toggle("active");var content = this.nextElementSibling;if (content.style.maxHeight){content.style.maxHeight = null;} else {content.style.maxHeight = content.scrollHeight + "px";
+                                                                }});}</script>';
        /* $sumhtml->find('style',0)->innertext .='.block {
         text-decoration: none;    width: 200px;    height: 100px;   background:#f9f9f9; border: 0;    display: block;}
         .block h3 { color: black;} .block:hover,.block a:hover,.block a h2:hover{cursor:pointer;color:#310099;} .block a {color:#4a4a4a}
@@ -98,19 +104,30 @@ else if (strpos($url, 'abc')){
             //  $keyPointDiv='<div class="inline-content wysiwyg right "><div><h2>Key points</h2><ul></ul></div></div>';
             //$heading='<h2>Key Points</h2>';
             // $outhtml->find('.inner',0)->innertext='<h2>Key Points</h2>'.
+            //   $sumhtml->find('.article.section', 0)->innertext = '<h1>' . $head . '</h1> <img src="' . $extract->image . '" alt="Hero image"><p></p>'
+            //                    . implode($keyPoints) . '<p>' . implode('</p><p>', $summary) . '</p>';
             if (!empty($extract->image)) {
+             /*   $sumcollapse='<div class="collapse" id="collapse';
+                $closecollapse='>';
+                array_walk($splitsum3, function ($element) use (&$sumcollapse, &$idx1,$closecollapse) {
+                    $sumcollapse .= '<div class="collapse" id="collapse'. $idx1 .'">'. $element . '</div>';
+                    $idx1++;
+                });*/
+                $sumcollapse .='</div>';
                 $sumhtml->find('.article.section', 0)->innertext = '<h1>' . $head . '</h1> <img src="' . $extract->image . '" alt="Hero image"><p></p>'
-                    . implode($keyPoints) . '<p>' . implode('</p><p>', $summary) . '</p>';
+                    . implode($keyPoints) . '<p>' . implode('</p><p>', $splitsum1) . '</p><button class="collapsible"><p>'.$splitsum2[0].'</p></button><div class="content"><p>
+                 '. implode('</p><p>', $splitsum3).'</p></div>';
 
             }else {
                 $sumhtml->find('.article.section', 0)->innertext = '<h1>' . $head . '</h1> <p></p>'
-                    . implode($keyPoints) . '<p>' . implode('</p><p>', $summary) . '</p>';
-
+                    . implode($keyPoints) . '<p>' . implode('</p><p>', $splitsum1) . '</p><button class="collapsible"><p>'.$splitsum2[0].'</p></button><div class="content"><p>
+                 '. implode('</p><p>', $splitsum3).'</p></div>';
             }
         }
         if($sumhtml->find('.subcolumns',0)){
             $sumhtml->find('.subcolumns',0)->innertext .='<div class="c25r sidebar"  onclick="window.location.href = \'origin.html\'" style="padding-top: 90px;" >
-                                                                      <button type="button" class="btn btn-success"> <a style="text-decoration: none;" href="origin.html"><h4 class="text-white">Go summarized page</h4></a> </button>  </div>';
+                                                                      <button type="button" class="btn btn-success"> <a style="text-decoration: none;" href="origin.html"><h4 class="text-white">Go original page</h4></a> </button>  </div>';
+
         }
 
     }  else echo"outhtml HERE".$sumhtml;

@@ -12,12 +12,17 @@ body{
     width:1000px;
 
 }
+#summaryDiv{
+    display: none;
 
+}
 #summaryDiv img{
 width:40px;
 }
 #summaryDiv .card{
-    position: fixed;
+
+    position:fixed;
+    overflow:visible;
 }
 
 .switch {
@@ -92,7 +97,10 @@ input:checked + .slider:before {
     color: #1906A7;
 }
 #searchBox{
-    margin:20px 20px 3% 1%;
+    margin:20px 0 10px 0;
+}
+.queryDiv{
+    width: 45%;
 }
 #output{
     margin:10px 10px 10px 5%;
@@ -111,6 +119,12 @@ input:checked + .slider:before {
 }
 #searchBox button ,#searchBox input {
     margin-left: 10px;
+
+}
+.queryInput{
+    border-top-left-radius: 10rem;
+    border-bottom-left-radius: 10rem;
+    height: 50px;
 }
 
 .block {
@@ -127,8 +141,8 @@ input:checked + .slider:before {
 .input-group-text{
     background-color: inherit;
     border-left: 0;
-    border-bottom-left-radius:0;
-    border-top-left-radius: 0;
+    border-radius: 0 1.7rem 1.7rem 0;
+
 }
 #query{
     border-right: 0;
