@@ -73,7 +73,7 @@ if(empty($_GET['query'])){
 
             foreach ($searchresultsObject->results as $searchresults) {
                 $encodedUrl=urlencode($searchresults->link);
-                echo "<div class='searchResultRow'><h3 class='resultTitle'><a  href=track.php?img=on&sentence=10&url=".$encodedUrl. ">" . $searchresults->title . "</a></h3>" . "<a class='resultLinks' onclick='track(".$searchresults->link.")' href=" . $searchresults->link . ">" . $searchresults->htmlFormattedUrl. "</a>" . nl2br("\n");
+                echo "<div class='searchResultRow'><h3 class='resultTitle'><a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">" . $searchresults->title . "</a></h3>" . "<a class='resultLinks' onclick='track(".$searchresults->link.")' href=" . $searchresults->link . ">" . $searchresults->htmlFormattedUrl. "</a>" . nl2br("\n");
                 $searchresults->snippet = preg_replace('!\s+!', ' ', $searchresults->htmlSnippet);
                 if(!empty($searchresults->thumbnail)){
                     echo "<div class='d-flex flex-row'><img src='".$searchresults->thumbnail."' alt='website thumbnail image'><p>".$searchresults->snippet."</p></div></div>";
