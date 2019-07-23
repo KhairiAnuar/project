@@ -64,12 +64,12 @@ if ($imgChk){
 
 
 
-}else{
-    $extract ='';
-    $_SESSION['extract']=$extract;
+    }else{
+        $extract ='';
+        $_SESSION['extract']=$extract;
 
 
-}
+    }}
 
 
 
@@ -87,10 +87,6 @@ if ($imgChk){
     );
     var_dump($response);
 */
-
-}
-
-
 
 
  // WORKS but not good https://www.meaningcloud.com/developer/summarization/doc/1.0/request

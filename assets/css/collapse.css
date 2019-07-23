@@ -1,0 +1,28 @@
+.collapsible {
+    background-color: white;
+    cursor: pointer;
+    border: none;
+    text-align: left;
+    outline: none;
+}
+.active, .collapsible:hover {
+    background-color: #5555550d;
+}
+.collapsible:after {
+    content: 'read more \002B\ ';
+    font-weight: normal;
+    float: right;
+    margin-left: 5px;
+    color:#2200CC;
+}
+.active:after {
+    content: "read less \2212\ ";
+    color:#2200CC;
+}
+.content {
+    padding: 0 18px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.2s ease-out;
+    background-color: #f1f1f1;
+}

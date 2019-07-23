@@ -1,6 +1,6 @@
 <?php
 
-require_once 'track.php';
+require_once 'getsummary.php';
 require_once 'assets/savePage/simple_html_dom.php';
 
 //$contentonly = isset($_POST['content']) ? true : false;
@@ -11,6 +11,13 @@ $contentonly = true;
 $allContent=false;
 $keepjs = false;
 $compress = true;
+    //Remove sentences from array summary) below specified number characters
+    foreach ($summary as $key=>$oneSentence){
+        if (strlen($oneSentence)<30){
+            unset($summary[$key]);
+        }
+    }
+
 $splitsum1=array_slice($summary,0,3);
 $splitsum2=array_slice($summary,4,1);
 $splitsum3=array_slice($summary,5);
@@ -22,18 +29,20 @@ $originhtml=$htmlSaveComplete->getCompletePage($keepjs, $allContent, $compress);
 $html = $htmlSaveComplete->getCompletePage($keepjs, $contentonly, $compress);
 $sumhtml = str_get_html($html);
 $orihtml= str_get_html($originhtml);
+
 if (strpos( $url, 'wiki')) {
-    $sumhtml->find('head',0)->innertext .='<link rel="stylesheet"
-        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
-
-   // $headContent=$outhtml->find('#content h1',0);
-
+    $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
+    $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" type="text/css" href="assets/css/wikipedia.css">';
+    $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
+    // $headContent=$outhtml->find('#content h1',0);
+    if ($sumhtml->find('div[id=siteSub]',0)){$sumhtml->find('div[id=siteSub]',0)->outertext='';}
+    if ($sumhtml->find('div[class=printfooter]',0)){$sumhtml->find('div[class=printfooter]',0)->outertext='';}
     if ($sumhtml->find('div[class=mw-parser-output]',0)){
        // $sumhtml->find('div[class=mw-parser-output]',0)->innertext='<div class="summaryText"></div>';
         foreach($sumhtml->find('div[id=bodyContent] a') as $links){
             $links->outertext='';
         }
-        $sumhtml->find('#siteSub',0)->outertext='';
+
         foreach ($sumhtml->find('div[class=mw-parser-output] p') as $p){
             $p->innertext='';
         }
@@ -44,23 +53,27 @@ if (strpos( $url, 'wiki')) {
         foreach ($sumhtml->find('div[class=mw-parser-output] h3') as $h3){
             $h3->outertext='';
         }
-        $sumhtml->find('.printfooter',0)->innertext='';
+
         foreach ($sumhtml->find('#footer')as $footer){
             $footer->innertext='';
         }
 
+
+
         if(!empty($extract->image)) {
-            $sumhtml->find('style',0)->innertext .='.block {
-           text-decoration: none;    width: 200px;    height: 272px;   background:red;border: 0;    display: block;}
-          .block h3 { color: black;}';
-            $sumhtml->find('div[class=mw-parser-output]', 0)->innertext = '<img src="' . $extract->image . '" width=30% height=auto alt="hero image"><p></p><p>' . implode('</p><p>', $summary) . '</p>';
+            $sumhtml->find('div[class=mw-parser-output]', 0)->innertext ='</h1> <img class="heroimg" src="' . $extract->image . '" alt="Hero image"><br><br><p>' . implode('</p><p>', $splitsum1) . '</p><button class="collapsible"><p>'.$splitsum2[0].'</p></button><div class="content">
+                <p>'. implode('</p><p>', $splitsum3).'</p></div>';
+          /*  $sumhtml->find('div[class=mw-parser-output]', 0)->innertext = '<img class="heroimg" src="' . $extract->image . '" height=auto alt="hero image"><p></p><p>' . implode('</p><p>', $summary) . '</p>';*/
         }else{
-            $sumhtml->find('div[class=mw-parser-output]', 0)->innertext = '<p>' . implode('</p><p>', $summary) . '</p>';
+            $sumhtml->find('div[class=mw-parser-output]', 0)->innertext = '<br><p>' . implode('</p><p>', $splitsum1) . '</p><button class="collapsible"><p>'.$splitsum2[0].'</p></button><div class="content">
+                <p>'. implode('</p><p>', $splitsum3).'</p></div>';
         }
-        $sumhtml->find('#bodyContent',0)->outertext='<div style="width:70%; float:left;">'.$sumhtml->find('#bodyContent',0)->outertext.'</div>';
-        if($sumhtml->find('#content',0)){
-            $sumhtml->find('#content',0)->innertext .='<div class="block" style="width:30%; float:left; padding-top: 50px;  " onclick="window.location.href = \'origin.html\';"><h2>Go original page</h2>
-                                                                        <button type="button" class="btn btn-primary" onclick="window.location.href = \'origin.html\';" >Switch</button></div>';
+
+        /*$sumhtml->find('#bodyContent',0)->outertext='<div style="max-width:70%; float:left;">'.$sumhtml->find('#bodyContent',0)->outertext.'</div>';*/
+        if($sumhtml->find('body',0)){
+            $sumhtml->find('body',0)->outertext='<div class="container"><div class="row"><div class="col-8">'.$sumhtml->find('#content',0)->outertext.'</div><div class="col-4"><script type="text/javascript" src="assets/scripts/collapse.js" ></script> <div class="mw-stack" style="box-sizing:border-box;float:right; clear:right; padding-top:100px;"  onclick="window.location.href = \'origin.html\'">
+                                                                  <button class="btn-lg" type="button" style="border-radius:0;"> <a style="color:#0645AD; text-decoration: none" href="origin.html"><h2>Go original page</h2></a> </button>
+                                                                  </div></div></div></div>';
         }
         //$body->plaintext .=' ';
 
@@ -72,11 +85,8 @@ else if (strpos($url, 'abc')){
 
         $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 
-        $sumhtml->find('style',0)->innertext .='.collapsible {background-color: white;cursor: pointer;border: none;text-align: left;outline: none;
-}.active, .collapsible:hover {background-color: #5555550d;}.collapsible:after {content: \'\002B\';font-weight: bold;float: right;margin-left: 5px;}.active:after {content: "\2212";
-}.content {padding: 0 18px;max-height: 0;overflow: hidden;transition: max-height 0.2s ease-out;background-color: #f1f1f1;}';
-        $sumhtml->find('#abcFooter',0)->innertext .='<script>var coll = document.getElementsByClassName("collapsible");var i;for (i = 0; i < coll.length; i++){coll[i].addEventListener("click", function() {this.classList.toggle("active");var content = this.nextElementSibling;if (content.style.maxHeight){content.style.maxHeight = null;} else {content.style.maxHeight = content.scrollHeight + "px";
-                                                                }});}</script>';
+        $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
+        $sumhtml->find('#abcFooter',0)->innertext .='<script src="assets/scripts/collapse.js" type="text/javascript"></script>';
        /* $sumhtml->find('style',0)->innertext .='.block {
         text-decoration: none;    width: 200px;    height: 100px;   background:#f9f9f9; border: 0;    display: block;}
         .block h3 { color: black;} .block:hover,.block a:hover,.block a h2:hover{cursor:pointer;color:#310099;} .block a {color:#4a4a4a}
@@ -111,9 +121,9 @@ else if (strpos($url, 'abc')){
                 $closecollapse='>';
                 array_walk($splitsum3, function ($element) use (&$sumcollapse, &$idx1,$closecollapse) {
                     $sumcollapse .= '<div class="collapse" id="collapse'. $idx1 .'">'. $element . '</div>';
-                    $idx1++;
+                    $idx1++;   $sumcollapse .='</div>';
                 });*/
-                $sumcollapse .='</div>';
+
                 $sumhtml->find('.article.section', 0)->innertext = '<h1>' . $head . '</h1> <img src="' . $extract->image . '" alt="Hero image"><p></p>'
                     . implode($keyPoints) . '<p>' . implode('</p><p>', $splitsum1) . '</p><button class="collapsible"><p>'.$splitsum2[0].'</p></button><div class="content"><p>
                  '. implode('</p><p>', $splitsum3).'</p></div>';
@@ -126,7 +136,7 @@ else if (strpos($url, 'abc')){
         }
         if($sumhtml->find('.subcolumns',0)){
             $sumhtml->find('.subcolumns',0)->innertext .='<div class="c25r sidebar"  onclick="window.location.href = \'origin.html\'" style="padding-top: 90px;" >
-                                                                      <button type="button" class="btn btn-success"> <a style="text-decoration: none;" href="origin.html"><h4 class="text-white">Go original page</h4></a> </button>  </div>';
+                                                                      <button type="button" class="btn btn-lg"> <a href="origin.html"><h4 >Go original page</h4></a> </button> </div>';
 
         }
 
@@ -134,8 +144,8 @@ else if (strpos($url, 'abc')){
         echo 'abc';
 }else if(strpos($url,'smh')){
    if (!empty($orihtml)){
-    $sumhtml->find('style',0)->innertext .='.smhBtn{padding-bottom:10px;} #content{padding-top:0 !important;}._2yRSr{border-top:0 !important;}
-                           ._2yRSr{border-top:0 !important}._2YAR2{margin-bottom:0 !important} ._2-5AL{padding-top:10px !important; padding-bottom:0 !important; margin-bottom: 16px !important;}';
+       $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css"><link rel="stylesheet" href="assets/css/smh.css">';
+       $sumhtml->find('.y77aF.noPrint',0)->innertext ='<script src="assets/scripts/collapse.js" type="text/javascript"></script>';
     $sumhtml->find('._21UZG.noPrint',0)->outertext='';
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
@@ -153,8 +163,9 @@ else if (strpos($url, 'abc')){
             $section->outertext='';
         }
         if(!empty($extract->image)){
-
-     $sumhtml->find('article[class=_2yRSr]', 0)->innertext .= '<section class="_1ysFk mx-auto" style="float: none;"><img src="' . $extract->image . '" alt="Hero image"><p>' . implode('</p><p>', $summary) . '</p></section>';
+            $sumhtml->find('article[class=_2yRSr]', 0)->innertext .='<section class="_1ysFk mx-auto" style="float: none;"> <img class="heroimg" src="' . $extract->image . '" alt="Hero image"><br><br><p>' . implode('</p><p>', $splitsum1) . '</p><button class="collapsible"><p>'.$splitsum2[0].'</p></button><div class="content">
+                <p>'. implode('</p><p>', $splitsum3).'</p></section></div>';
+    /* $sumhtml->find('article[class=_2yRSr]', 0)->innertext .= '<section class="_1ysFk mx-auto" style="float: none;"><img src="' . $extract->image . '" alt="Hero image"><p>' . implode('</p><p>', $summary) . '</p></section>';*/
         }
         else {
             $sumhtml->find('article[class=_2yRSr]', 0)->innertext .= "<p>" . implode("</p><p>", $summary) . "</p>";
@@ -169,17 +180,20 @@ else if (strpos($url, 'abc')){
 }
 //-------Original html modification
 if (strpos( $url, 'wiki')) {
-
+    $orihtml->find('head',0)->innertext .='<link rel="stylesheet" type="text/css" href="assets/css/wikipedia.css">';
 
     if ($orihtml->find('#content',0)){
         $orihtml->find('#catlinks',0)->outertext='';
+        $orihtml->find('#toc',0)->outertext='';
 
     }
-    $orihtml->find('.navbox',0)->outertext='';
-    $orihtml->find('#mw-navigation',0)->outertext='';
+    if($orihtml->find('.navbox',0)){$orihtml->find('.navbox',0)->outertext=''; $orihtml->find('#mw-navigation',0)->outertext='';}
     if($orihtml->find('#content',0)){
-        $orihtml->find('#content',0)->innertext .='<div style="width:30%; float:left; padding-top: 50px;"  onclick="window.location.href = \'summarized.html\'">
-                                                                  <button type="button" class="btn btn-success"> <a href="summarized.html"><h2>Go summarized page</h2></a> </button>  </div>';
+        $orihtml->find('#jump-to-nav',0)->outertext ='<div class="mw-stack" style="box-sizing:border-box;float:right; clear:right; padding-right: 50px; padding-left:50px;"  onclick="window.location.href = \'summarized.html\'">
+                                                                  <button type="button"><a href="summarized.html"><h2>Go summarized page</h2></a> </button>  </div>';
+        foreach ($orihtml->find('.mw-jump-link')as $brokenJumpLinks){
+            $brokenJumpLinks->outertext='';
+        }
     }
 }
 else if (strpos($url, 'abc')){
@@ -205,7 +219,7 @@ else if (strpos($url, 'abc')){
 
         if($orihtml->find('.subcolumns',0)){
             $orihtml->find('.subcolumns',0)->innertext .='<div class="block c25r sidebar" style="padding-top: 90px;" onclick="window.location.href = \'summarized.html\'">
-                                                                        <a href="summarized.html"><h4>Go summarized page</h4></a>
+                                                                       <button type="button" class="btn btn-lg"> <a href="summarized.html"><h4 >Go summarized page</h4></a> </button> 
                                                                         </div>';
         }//<button type="button" class="btn btn-primary" onclick="window.location.href = 'summarized.html';" >Switch</button>
 
@@ -214,12 +228,9 @@ else if (strpos($url, 'abc')){
 }else if(strpos($url,'smh')){
     if (!empty($orihtml)){
 
-        $orihtml->find('head',0)->innertext .='<link rel="stylesheet"
+        $orihtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/smhori.css"><link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 
-        $orihtml->find('style',0)->innertext .='.smhBtn{padding-bottom:10px;}._2YAR2{margin-bottom:0 !important} #content{padding-top:0 !important; border-top:0 !important;}
-        ._1ysFk{float:none !important; margin-left:auto !important; margin-right:auto !important;} .vPaWe{float:none !important; margin-left:auto !important; 
-        margin-right:auto !important;}._2yRSr{border-top:0 !important} ._2-5AL{padding-top:10px !important; padding-bottom:0 !important; margin-bottom: 16px !important;}';
         $orihtml->find('._21UZG.noPrint',0)->outertext='';
         $orihtml->find('._34z61._2iGMx',0)->outertext='';
         $orihtml->find('._2-5AL',0)->outertext .='<div class="smhBtn d-flex justify-content-end" onclick="window.location.href = \'summarized.html\'"  >
