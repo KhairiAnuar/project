@@ -4,19 +4,20 @@
     border: none;
     text-align: left;
     outline: none;
+    width: 100%;
 }
 .active, .collapsible:hover {
     background-color: #5555550d;
 }
 .collapsible:after {
-    content: 'read more \002B\ ';
+    content: 'Read more \002B\ ';
     font-weight: normal;
     float: right;
     margin-left: 5px;
     color:#2200CC;
 }
 .active:after {
-    content: "read less \2212\ ";
+    content: "Read less \2212\ ";
     color:#2200CC;
 }
 .content {

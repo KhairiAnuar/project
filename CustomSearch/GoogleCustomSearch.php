@@ -84,10 +84,10 @@ class GoogleCustomSearch
      * @return object The results of the search
      * @throws Exception If error is returned from Google
      **/
-    public function search($terms, $page=1, $per_page=10, $extra=[])
+    public function search($terms, $page=1, $per_page=7, $extra=[])
     {
         // Google only allows 10 results at a time
-        $per_page = ($per_page > 10) ? 10 : $per_page;
+        $per_page = ($per_page > 7) ? 7 : $per_page;
         $params = [
             'q' => $terms,
             'start' => (($page - 1) * $per_page) + 1,

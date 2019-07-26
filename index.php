@@ -1,6 +1,6 @@
 <!--Khairi project summarization-->
 <!DOCTYPE html>
-<html>
+<html lang="en">
     <head>
         <title>MyGoogle Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -40,10 +40,16 @@
             <div class="col-8 mx-auto d-flex flex-column align-items-center">
                 <img src="assets/images/mygoogle.png" id="logo" class="w-22" alt="Logo Website"><br>
                 <form action="search.php" method="get">
+
                     <div class="form-group d-inline-flex ui-widget">
-                        <input type="text" class="form-control w-100" id="query" name="query" aria-label="input search query"/>
+                        <select class="custom-select" id="querySelect">
+                            <option value="kidsnews" selected>News</option>
+                            <option value="wikipedia">Wikipedia</option>
+
+                        </select>
+                        <input type="text" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
                         <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-search"></i></span>
+                            <span class="input-group-text"><i class="fas fa-search"> </i></span>
                         </div>
                             <div class="col-auto">
                                 <input type="hidden"name="pageno" value="1">
@@ -61,7 +67,8 @@
 
         </div>
     </div>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
     </body>
 </html>
