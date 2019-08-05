@@ -1,8 +1,8 @@
 <?php
-
+# include the files
 require_once 'getsummary.php';
 require_once 'assets/savePage/simple_html_dom.php';
-
+require 'assets/savePage/htmlSaveComplete.php';
 //$contentonly = isset($_POST['content']) ? true : false;
 //$keepjs = isset($_POST['javascript']) ? true : false;
 //$compress = isset($_POST['compress']) ? true : false;
@@ -47,19 +47,17 @@ if(strpos($url,'kidsnews')){
             unset($summary[$key]);
         }
     }
-}else{
+} else if(strpos($url,'wiki')||strpos($url,'abc')||strpos($url,'smh')){
     $htmlSaveComplete = new htmlSaveComplete($url);
     $originhtml=$htmlSaveComplete->getCompletePage($keepjs, $allContent, $compress);
     $html = $htmlSaveComplete->getCompletePage($keepjs, $contentonly, $compress);
     $sumhtml = str_get_html($html);
     $orihtml= str_get_html($originhtml);
-}
+}else{ echo 'Sorry website is not available';}
+
 $splitsum1=array_slice($summary,0,3);
 $splitsum2=array_slice($summary,4,1);
 $splitsum3=array_slice($summary,5);
-# include the class
-require 'assets/savePage/htmlSaveComplete.php';
-
 
 
 
@@ -215,8 +213,10 @@ else if (strpos($url, 'abc')){
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
 
         $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
-        $sumhtml->find('.btyb')->outertext='';
+   /*     $sumhtml->find('.btyb')->outertext='';*/
+
         if ($sumhtml->find('.header',0)){
+            $sumhtml->find('.logo',0)->outertext='';
             $sumhtml->find('.fixed-nav-container.row',0)->outertext='';
             $sumhtml->find('.header',0)->innertext .='<script src="assets/scripts/collapse.js" type="text/javascript"></script>';
            }
@@ -325,8 +325,10 @@ else if (strpos($url, 'abc')){
     if (!empty($orihtml)){
         $orihtml->find('head',0)->innertext .='<link rel="stylesheet"
         href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
-        $orihtml->find('btyb')->outertext='';
+/*        $orihtml->find('div[class=btyb]')->outertext='';*/
+
         if ($orihtml->find('.header',0)){
+            $orihtml->find('.logo',0)->outertext='';
             $orihtml->find('.fixed-nav-container.row',0)->outertext='';
          }
         $orihtml->find('aside[class=rightrail]',0)->outertext='';

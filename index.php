@@ -4,6 +4,7 @@
     <head>
         <title>MyGoogle Search</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="website icon" href="assets/images/favicon.ico" type="image/x-icon"/>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
         <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
 
@@ -42,26 +43,24 @@
                 <form action="search.php" method="get">
 
                     <div class="form-group d-inline-flex ui-widget">
-                        <select class="custom-select" id="querySelect">
-                            <option value="kidsnews" selected>News</option>
+                        <select class="custom-select" id="querySelect" name="type">
+                            <option value="news" selected>News</option>
                             <option value="wikipedia">Wikipedia</option>
 
                         </select>
-                        <input type="text" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
+                        <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
                         <div class="input-group-append">
                             <span class="input-group-text"><i class="fas fa-search"> </i></span>
                         </div>
                             <div class="col-auto">
-                                <input type="hidden"name="pageno" value="1">
+                                <input type="hidden" name="pageno" value="1">
                                 <input id="btnSearch" class="btn btn-secondary" value="Search"  type="submit">
                             </div>
                             </form>
 
 
            </div>
-                <div class="row" id="searchResult"></div>
 
-                <div class="row" id="output"></div>
             </div>
 
 
