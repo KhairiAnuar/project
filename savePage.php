@@ -1,8 +1,8 @@
 <?php
-
+# include the files
 require_once 'getsummary.php';
 require_once 'assets/savePage/simple_html_dom.php';
-
+require 'assets/savePage/htmlSaveComplete.php';
 //$contentonly = isset($_POST['content']) ? true : false;
 //$keepjs = isset($_POST['javascript']) ? true : false;
 //$compress = isset($_POST['compress']) ? true : false;
@@ -16,13 +16,8 @@ $compress = true;
         if (strlen($oneSentence)<30){
             unset($summary[$key]);
         }
-    }
 
-$splitsum1=array_slice($summary,0,3);
-$splitsum2=array_slice($summary,4,1);
-$splitsum3=array_slice($summary,5);
-# include the class
-require 'assets/savePage/htmlSaveComplete.php';
+    }
 function file_get_contents_curl($url) {
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_HEADER, 0);
@@ -32,12 +27,39 @@ function file_get_contents_curl($url) {
     curl_close($ch);
     return $data;
 }
+if(strpos($url,'kidsnews')){
+    $html=file_get_contents_curl($url);
+    $sumhtml = str_get_html($html);
+    $originhtml=file_get_contents_curl($url);
+    $orihtml= str_get_html($originhtml);
 
-$htmlSaveComplete = new htmlSaveComplete($url);
-$originhtml=$htmlSaveComplete->getCompletePage($keepjs, $allContent, $compress);
-$html = $htmlSaveComplete->getCompletePage($keepjs, $contentonly, $compress);
-$sumhtml = str_get_html($html);
-$orihtml= str_get_html($originhtml);
+    foreach($summary as $key => $oneSentence) {
+        if(strpos($oneSentence, 'HAVE YOUR SAY:') !== false){
+            unset($summary[$key]);
+        }
+        if(strpos($oneSentence, 'VCOP ACTIVITY') !== false){
+            unset($summary[$key]);
+        }
+        if(strpos($oneSentence, 'Extension Write a short biography') !== false){
+            unset($summary[$key]);
+        }
+        if(strpos($oneSentence, 'Curriculum Links') !== false){
+            unset($summary[$key]);
+        }
+    }
+} else if(strpos($url,'wiki')||strpos($url,'abc')||strpos($url,'smh')){
+    $htmlSaveComplete = new htmlSaveComplete($url);
+    $originhtml=$htmlSaveComplete->getCompletePage($keepjs, $allContent, $compress);
+    $html = $htmlSaveComplete->getCompletePage($keepjs, $contentonly, $compress);
+    $sumhtml = str_get_html($html);
+    $orihtml= str_get_html($originhtml);
+}else{ echo 'Sorry website is not available';}
+
+$splitsum1=array_slice($summary,0,3);
+$splitsum2=array_slice($summary,4,1);
+$splitsum3=array_slice($summary,5);
+
+
 
 if (strpos( $url, 'wiki')) {
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
@@ -184,7 +206,40 @@ else if (strpos($url, 'abc')){
 
 
    }else{ echo'empty html';}
-} else{
+}else if(strpos($url,'kidsnews')){
+
+    if (!empty($sumhtml)){
+        $sumhtml->find('head',0)->innertext .='<link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
+
+        $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
+   /*     $sumhtml->find('.btyb')->outertext='';*/
+
+        if ($sumhtml->find('.header',0)){
+            $sumhtml->find('.logo',0)->outertext='';
+            $sumhtml->find('.fixed-nav-container.row',0)->outertext='';
+            $sumhtml->find('.header',0)->innertext .='<script src="assets/scripts/collapse.js" type="text/javascript"></script>';
+           }
+        if($sumhtml->find('#single',0 )) {
+            $head = $sumhtml->find('.headline', 0);
+            $sumhtml->find('#single', 0)->innertext = '<div id="info"><h1>' . $head . '</h1><div class="text-right" onclick="window.location.href = \'origin.html\'">
+                                                                       <button type="button" class="btn btn-lg"> <a href="origin.html"><h4 >Go original page</h4></a> </button> 
+                                                                        </div> <img class="image" src="' . $extract->image . '" alt="Hero image"></div>';
+            $sumhtml->find('.meta',0)->outertext='';
+              $sumhtml->find('#single',0)->innertext.='<div id="story" style="display:block"><p></p>'
+                  . '<p class="capi-html">' . implode('</p><p class="capi-html">', $splitsum1) . '</p><button class="collapsible"><p class="capi-html">'.$splitsum2[0].'</p></button><div class="content"><p class="capi-html">
+                   '. implode('</p><p class="capi-html">', $splitsum3).'</p></div></div>';
+
+        }
+        $sumhtml->find('#module-more-in',0)->outertext='';
+        if ($sumhtml->find('#footer',0)){
+            $sumhtml->find('#footer',0)->outertext='';
+        }
+        $sumhtml->find('#page',0)->innertext.='<script src="assets/scripts/collapse.js" type="text/javascript"></script>';
+
+    }else{ echo 'Sorry page is empty';}
+}
+else{
     echo'Website specified not applicable to save ';
 }
 //-------Original html modification
@@ -260,13 +315,37 @@ else if (strpos($url, 'abc')){
             $spaceDiv->outertext='';
         }
     }else{
-        echo 'empty';
+        echo 'This web page is empty sorry';
     }
 
 
-} else{
-    $headContent=' ';
+
+}else if(strpos($url,'kidsnews')){
+
+    if (!empty($orihtml)){
+        $orihtml->find('head',0)->innertext .='<link rel="stylesheet"
+        href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
+/*        $orihtml->find('div[class=btyb]')->outertext='';*/
+
+        if ($orihtml->find('.header',0)){
+            $orihtml->find('.logo',0)->outertext='';
+            $orihtml->find('.fixed-nav-container.row',0)->outertext='';
+         }
+        $orihtml->find('aside[class=rightrail]',0)->outertext='';
+        if($orihtml->find('p[class=intro]',0)){
+            $orihtml->find('p[class=intro]',0)->outertext='<div class="text-right" onclick="window.location.href = \'summarized.html\'">
+                                                                       <button type="button" class="btn btn-lg"> <a href="summarized.html"><h4 >Go summarized page</h4></a> </button> 
+                                                                        </div>';
+        }
+    foreach ($orihtml->find('.caption') as $caption){
+        $caption->outertext='';
+    }
+    }
 }
+
+    else{
+        echo ' sorry website not applicable to summarize';
+    }
 
 if (!$html) {
     header('LOCATION: index.php?e=' . urlencode('Error saving the page, please try again later.'));
