@@ -13,9 +13,14 @@ $keepjs = false;
 $compress = true;
     //Remove sentences from array summary) below specified number characters
     foreach ($summary as $key=>$oneSentence){
-        if (strlen($oneSentence)<30){
+        if (strlen($oneSentence)<30 || strlen($oneSentence) >220 ){
             unset($summary[$key]);
         }
+/*        $oneSentence= mb_convert_encoding($oneSentence, "HTML-ENTITIES", 'ISO-8859-1');*/
+      /*  if(strpos($oneSentence,'â€™')!==false){
+                $oneSentence=str_replace('â€™',"'",$oneSentence);
+        }*/
+
 
     }
 function file_get_contents_curl($url) {
@@ -28,25 +33,61 @@ function file_get_contents_curl($url) {
     return $data;
 }
 if(strpos($url,'kidsnews')){
-    $html=file_get_contents_curl($url);
+        //Below removes unrelated sentences or duplicated words, convert all capitalized characters to lowercase
+    foreach($summary as $key => $oneSentence) {
+
+        if (strpos($oneSentence, 'HAVE YOUR SAY:') !== false) {
+            unset($summary[$key]);
+        }
+        if (strpos($oneSentence, 'VCOP ACTIVITY') !== false) {
+            unset($summary[$key]);
+        }
+        if (strpos($oneSentence, 'Extension Write a') !== false) {
+            unset($summary[$key]);
+        }
+        if (strpos($oneSentence, 'Curriculum Links:') !== false) {
+            unset($summary[$key]);
+        }
+        if (strpos($oneSentence, 'male lions was with a female') !== false) {
+            unset($summary[$key]);
+        }
+        if (strpos($oneSentence,'Write a diary entry')!==false){
+            unset($summary[$key]);
+        }
+        if(strpos($oneSentence,'granite monolith')!==false){
+            $summary[$key]=str_replace('granite monolith','giant rock',$oneSentence);
+            break;
+        }
+        if(strpos($oneSentence,'ssssssss-urprising')!==false){
+            $summary[$key]=str_replace('ssssssss-urprising story of a snake','surprising story of a hungry snake',$oneSentence);
+        }
+        if(strpos($oneSentence,'He performed surgery')!==false){
+            $summary[$key]=str_replace('He performed surgery','Doctor performed surgery',$oneSentence);
+            break;
+        }
+        if(strpos($oneSentence,'SKYDIVING Skydiving')!==false){
+            $summary[$key]=str_replace('SKYDIVING Skydiving','Skydiving',$oneSentence);
+            break;
+        }
+        if(strpos($oneSentence,'This is a large body of ice that')!==false){
+            $summary[$key]=ucfirst(strtolower($oneSentence));
+            $summary[$key]=str_replace('This is a large body of ice that is','is body of ice covering',$oneSentence);
+            break;
+        }
+        if(strpos($oneSentence,'THE LONGEST-LIVING THINGS')!==false){
+            $summary[$key]=ucfirst(strtolower($oneSentence));
+            $summary[$key]=str_replace('aldabra','Aldabra',$summary[$key]);
+            break;
+        }
+
+    }
+    $html=mb_convert_encoding(file_get_contents_curl($url),"HTML-ENTITIES","UTF-8");
     $sumhtml = str_get_html($html);
     $originhtml=file_get_contents_curl($url);
     $orihtml= str_get_html($originhtml);
+    $sumhtml->find('style',0)->innertext .='.image{ max-width:930px}';
 
-    foreach($summary as $key => $oneSentence) {
-        if(strpos($oneSentence, 'HAVE YOUR SAY:') !== false){
-            unset($summary[$key]);
-        }
-        if(strpos($oneSentence, 'VCOP ACTIVITY') !== false){
-            unset($summary[$key]);
-        }
-        if(strpos($oneSentence, 'Extension Write a short biography') !== false){
-            unset($summary[$key]);
-        }
-        if(strpos($oneSentence, 'Curriculum Links') !== false){
-            unset($summary[$key]);
-        }
-    }
+
 } else if(strpos($url,'wiki')||strpos($url,'abc')||strpos($url,'smh')){
     $htmlSaveComplete = new htmlSaveComplete($url);
     $originhtml=$htmlSaveComplete->getCompletePage($keepjs, $allContent, $compress);
@@ -62,6 +103,7 @@ $splitsum3=array_slice($summary,5);
 
 
 if (strpos( $url, 'wiki')) {
+    $sumhtml->find('head',0)->innertext.='<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" type="text/css" href="assets/css/wikipedia.css">';
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';

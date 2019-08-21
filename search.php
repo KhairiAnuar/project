@@ -91,7 +91,7 @@ if(empty($_GET['query'])){
 
     }
     if($type=='news'){
-        $searchresultsObject = $search->search($term,'www.kidsnews.com.au','date:r:20170101:20190729',$pageNumber,10);
+        $searchresultsObject = $search->search($term,'www.kidsnews.com.au','date:r:20170101:20190817',$pageNumber,10);
     }
     else{
         $searchresultsObject = $search->search($term,'simple.wikipedia.org','',$pageNumber,10);
