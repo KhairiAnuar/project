@@ -3,9 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="62458d4f-d025-48c6-8585-cced2c13357a" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/wikipedia.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/wikipedia.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/origin.html" beforeDir="false" afterPath="$PROJECT_DIR$/origin.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/savePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/savePage.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/summarized.html" beforeDir="false" afterPath="$PROJECT_DIR$/summarized.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -37,37 +37,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/savePage.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="164">
-              <caret line="61" column="39" lean-forward="true" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2006">
+            <state relative-caret-position="448">
               <caret line="118" column="43" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="43" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/summarized.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1598">
-              <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
             </state>
           </provider>
         </entry>
@@ -75,7 +49,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1071">
+            <state relative-caret-position="448">
               <caret line="63" column="15" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="15" />
             </state>
           </provider>
@@ -117,25 +91,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/savePage.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+            <state relative-caret-position="351">
+              <caret line="312" column="37" lean-forward="true" selection-start-line="312" selection-start-column="37" selection-end-line="312" selection-end-column="37" />
+              <folding>
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/originXX.html">
+        <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="4488">
-              <caret line="49" selection-start-line="49" selection-end-line="64" selection-end-column="13" />
-              <folding>
-                <element signature="e#78802#79035#1" expanded="true" />
-                <element signature="e#79183#79484#1" expanded="true" />
-                <element signature="e#133578#134363#2" expanded="true" />
-              </folding>
+            <state relative-caret-position="312">
+              <caret line="2535" column="1" selection-start-line="2535" selection-start-column="1" selection-end-line="2535" selection-end-column="23" />
             </state>
           </provider>
         </entry>
@@ -154,14 +127,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>htmlSaveComplete</find>
-      <find>head</find>
-      <find>header</find>
-      <find>logo</find>
-      <find>queryInput</find>
-      <find>query</find>
-      <find>$term</find>
-      <find>sort</find>
       <find>date</find>
       <find>$sort</find>
       <find>request</find>
@@ -184,6 +149,14 @@
       <find>px</find>
       <find>unset</find>
       <find>uns</find>
+      <find>vector</find>
+      <find>background-image:url(/w/skins/Vector</find>
+      <find>background-image:url(/w/</find>
+      <find>main</find>
+      <find>p-lo</find>
+      <find>logo</find>
+      <find>infobo</find>
+      <find>wiki</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\project\web-scraper</dir>
@@ -230,7 +203,6 @@
         <option value="$PROJECT_DIR$/assets/scripts/collapse.js" />
         <option value="$PROJECT_DIR$/origin.html" />
         <option value="$PROJECT_DIR$/assets/scripts/load.js" />
-        <option value="$PROJECT_DIR$/assets/css/wikipedia.css" />
         <option value="$PROJECT_DIR$/assets/css/smh.css" />
         <option value="$PROJECT_DIR$/assets/css/smhori.css" />
         <option value="$PROJECT_DIR$/summarized.html" />
@@ -240,6 +212,7 @@
         <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/search.php" />
+        <option value="$PROJECT_DIR$/assets/css/wikipedia.css" />
         <option value="$PROJECT_DIR$/savePage.php" />
       </list>
     </option>
@@ -264,7 +237,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -334,6 +306,7 @@
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -501,20 +474,22 @@
       <workItem from="1566217318653" duration="9000" />
       <workItem from="1566217341279" duration="2671000" />
       <workItem from="1566297894899" duration="4059000" />
-      <workItem from="1566352593590" duration="1884000" />
+      <workItem from="1566352593590" duration="2361000" />
+      <workItem from="1567915771356" duration="12726000" />
+      <workItem from="1568896352001" duration="1661000" />
+      <workItem from="1568902593346" duration="2865000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="672111000" />
+    <option name="totallyTimeSpent" value="689840000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24966443" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.3295302" />
-      <window_info content_ui="combo" id="Project" order="2" side_tool="true" visible="true" weight="0.21744967" />
+      <window_info content_ui="combo" id="Project" order="2" side_tool="true" visible="true" weight="0.22751679" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4986577" weight="0.32719547" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49530202" weight="0.73512745" />
@@ -525,7 +500,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" order="8" />
       <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286119" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.56510067" visible="true" weight="0.26628897" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" sideWeight="0.56510067" visible="true" weight="0.24929178" />
       <window_info anchor="bottom" id="Event Log" order="11" sideWeight="0.43489933" side_tool="true" weight="0.5084986" />
       <window_info anchor="bottom" id="Python Console" order="12" weight="0.32956153" />
       <window_info anchor="bottom" id="PHP-CGI Server" order="13" />
@@ -571,12 +546,6 @@
     <SUITE FILE_PATH="coverage/project$scrap.coverage" NAME="scrap Coverage Results" MODIFIED="1561205833534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/assets/images/endomi.png">
-      <provider selected="true" editor-type-id="images" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/vendor/rct567/dom-query/src/Rct567/DomQuery/CssToXpath.php" />
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/dom/dom_c.php" />
-    <entry file="file://$PROJECT_DIR$/output.html" />
     <entry file="file://$PROJECT_DIR$/vendor/rct567/dom-query/src/Rct567/DomQuery/DomQuery.php" />
     <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
       <provider selected="true" editor-type-id="text-editor">
@@ -724,42 +693,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/savePage.php">
+    <entry file="file://$PROJECT_DIR$/originXX.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="164">
-          <caret line="61" column="39" lean-forward="true" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+        <state relative-caret-position="4488">
+          <caret line="49" selection-start-line="49" selection-end-line="64" selection-end-column="13" />
           <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="e#78802#79035#1" expanded="true" />
+            <element signature="e#79183#79484#1" expanded="true" />
+            <element signature="e#133578#134363#2" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php">
+    <entry file="file://$USER_HOME$/AppData/Local/Temp/Rar$DIa18108.34422/CSS.class.php" />
+    <entry file="file://$USER_HOME$/Desktop/Project Summarization/load.css">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$USER_HOME$/Desktop/Project Summarization/load.css wiki.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
-          <caret line="118" column="43" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="43" />
+        <state relative-caret-position="-357">
+          <caret selection-end-line="1032" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/summarized.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1598">
-          <caret line="94" column="4" selection-start-line="94" selection-start-column="4" selection-end-line="94" selection-end-column="4" />
+        <state relative-caret-position="51">
+          <caret line="3" column="97" selection-start-line="3" selection-start-column="97" selection-end-line="3" selection-end-column="97" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1071">
-          <caret line="63" column="15" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="15" />
-        </state>
-      </provider>
-    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/images/simplewiki.png" />
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="1530">
@@ -788,21 +752,34 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
+    <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="19" selection-start-line="6" selection-start-column="19" selection-end-line="6" selection-end-column="19" />
+        <state relative-caret-position="448">
+          <caret line="63" column="15" selection-start-line="63" selection-start-column="15" selection-end-line="63" selection-end-column="15" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/originXX.html">
+    <entry file="file://$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4488">
-          <caret line="49" selection-start-line="49" selection-end-line="64" selection-end-column="13" />
+        <state relative-caret-position="448">
+          <caret line="118" column="43" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="2535" column="1" selection-start-line="2535" selection-start-column="1" selection-end-line="2535" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/savePage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="351">
+          <caret line="312" column="37" lean-forward="true" selection-start-line="312" selection-start-column="37" selection-end-line="312" selection-end-column="37" />
           <folding>
-            <element signature="e#78802#79035#1" expanded="true" />
-            <element signature="e#79183#79484#1" expanded="true" />
-            <element signature="e#133578#134363#2" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

@@ -105,13 +105,21 @@ $splitsum3=array_slice($summary,5);
 if (strpos( $url, 'wiki')) {
     $sumhtml->find('head',0)->innertext.='<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="assets/css/collapse.css">';
-    $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" type="text/css" href="assets/css/wikipedia.css">';
+//    $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" type="text/css" href="assets/css/wikipedia.css">';
+
     $sumhtml->find('head',0)->innertext .='<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">';
     // $headContent=$outhtml->find('#content h1',0);
+    $sumhtml->find('style',0)->innertext.='.heroimg{
+    max-width: 400px;
+    width: 100%;
+}';
     if ($sumhtml->find('div[id=siteSub]',0)){$sumhtml->find('div[id=siteSub]',0)->outertext='';}
     if ($sumhtml->find('div[class=printfooter]',0)){$sumhtml->find('div[class=printfooter]',0)->outertext='';}
+
+
     if ($sumhtml->find('div[class=mw-parser-output]',0)){
        // $sumhtml->find('div[class=mw-parser-output]',0)->innertext='<div class="summaryText"></div>';
+
         foreach($sumhtml->find('div[id=bodyContent] a') as $links){
             $links->outertext='';
         }
@@ -126,6 +134,7 @@ if (strpos( $url, 'wiki')) {
         foreach ($sumhtml->find('div[class=mw-parser-output] h3') as $h3){
             $h3->outertext='';
         }
+
 
         foreach ($sumhtml->find('#footer')as $footer){
             $footer->innertext='';
@@ -145,7 +154,7 @@ if (strpos( $url, 'wiki')) {
         /*$sumhtml->find('#bodyContent',0)->outertext='<div style="max-width:70%; float:left;">'.$sumhtml->find('#bodyContent',0)->outertext.'</div>';*/
         if($sumhtml->find('body',0)){
             $sumhtml->find('body',0)->outertext='<div class="container"><div class="row"><div class="col-8">'.$sumhtml->find('#content',0)->outertext.'</div><div class="col-4"><script type="text/javascript" src="assets/scripts/collapse.js" ></script> <div class="mw-stack" style="box-sizing:border-box;float:right; clear:right; padding-top:100px;"  onclick="window.location.href = \'origin.html\'">
-                                                                  <button class="btn-lg" type="button" style="border-radius:0;"> <a style="color:#0645AD; text-decoration: none" href="origin.html"><h2>Go original page</h2></a> </button>
+                                                                  <button class="btn-lg" type="button" style="border-radius:0;"> <a style="color:#0645AD; text-decoration: none" href="origin.html"><h3>Go original page</h3></a> </button>
                                                                   </div></div></div></div>';
         }
         //$body->plaintext .=' ';
@@ -286,8 +295,15 @@ else{
 }
 //-------Original html modification
 if (strpos( $url, 'wiki')) {
+    $orihtml->find('head',0)->innertext .='<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />';
     $orihtml->find('head',0)->innertext .='<link rel="stylesheet" type="text/css" href="assets/css/wikipedia.css">';
+    if($orihtml->find('div[id=mw-navigation]',0)){
+        $orihtml->find('div[id=mw-head]',0)->outertext='';
+        foreach ($orihtml->find('div[class=portal]') as $sideMenu){
+            $sideMenu->outertext='';
+        }
 
+    }
     if ($orihtml->find('#content',0)){
         $orihtml->find('#catlinks',0)->outertext='';
         $orihtml->find('#toc',0)->outertext='';
@@ -296,7 +312,7 @@ if (strpos( $url, 'wiki')) {
     if($orihtml->find('.navbox',0)){$orihtml->find('.navbox',0)->outertext=''; $orihtml->find('#mw-navigation',0)->outertext='';}
     if($orihtml->find('#content',0)){
         $orihtml->find('#jump-to-nav',0)->outertext ='<div class="mw-stack" style="box-sizing:border-box;float:right; clear:right; padding-right: 50px; padding-left:50px;"  onclick="window.location.href = \'summarized.html\'">
-                                                                  <button type="button"><a href="summarized.html"><h2>Go summarized page</h2></a> </button>  </div>';
+                                                                  <button class="btn-lg" type="button"><a href="summarized.html">Go summarized page</a> </button>  </div>';
         foreach ($orihtml->find('.mw-jump-link')as $brokenJumpLinks){
             $brokenJumpLinks->outertext='';
         }
