@@ -3,6 +3,38 @@
     max-width: 400px;
     width: 100%;
 }
+.glowBlink input[type=text] ,.glowBlink input[type=text]:focus ,.btnGlow{
+    animation: glow 1300ms ease-out infinite alternate;
+    background: #f2f2f2;
+    background: linear-gradient(#ffffff, #ffffff);
+    border-color: #ced4da;
+    /*
+    box-shadow: 0 0 5px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(11, 141, 157, 0.1), 0 2px 0 #0b8d9d;
+    */
+    color: #000000;
+    outline: none;
+}
+
+@keyframes glow {
+    0% {
+        border-color: #00799d;
+        box-shadow: 0 0 3px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(0, 121, 157, 0.1), 0 1px 0 #87939d;
+    }
+    100% {
+        border-color: #00799d;
+        box-shadow: 0 0 15px rgba(0, 121, 157, 0.6), inset 0 0 10px rgba(2, 91, 157, 0.4), 0 1px 0 #87939d;
+    }
+}
+
+.clickableBigger{
+    box-sizing:border-box;
+    float:right;
+    clear:right;
+    padding:25px 100px 50px 50px;
+    cursor:pointer
+}
+
+
 .mw-parser-output p{font-size:1.25em;}
 .mw-stack a{color:#0645AD !important;}
 .mw-stack a:hover{color:#0B0080 !important;}
@@ -2542,4 +2574,26 @@ div.gallerytext {
 
 .btn-lg:hover {
     color: #0313ad;
+}
+
+.btnSwitch{
+    font-size: 1.5rem;
+    line-height: 1.5;
+    border-radius: .3rem !important;
+    padding: 1rem 1rem !important;
+    color: white !important;
+    text-decoration: none;
+    background-color: #007bff;
+    border-color: #007bff;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+.btnSwitch:hover{
+    background: #005fb2;
 }

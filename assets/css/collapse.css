@@ -27,3 +27,6 @@
     transition: max-height 0.2s ease-out;
     background-color: #f1f1f1;
 }
+.mw-body-content p{
+    font-size: 1.25rem;
+}
