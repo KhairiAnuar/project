@@ -40,7 +40,7 @@
         <div class="row align-items-center h-100">
             <div class="col-8 mx-auto d-flex flex-column align-items-center">
                 <img src="assets/images/mygoogle.png" id="logo" class="w-22" alt="Logo Website"><br>
-                <form action="search.php" method="get">
+                <form class="indexForm" action="search.php" method="get">
 
                     <div class="form-group d-inline-flex ui-widget">
                         <select class="custom-select" id="querySelect" name="type">
@@ -48,14 +48,20 @@
                             <option value="wikipedia">Wikipedia</option>
 
                         </select>
+                        <div class="glowBlink">
                         <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
-                        <div class="input-group-append">
-                            <span class="input-group-text"><i class="fas fa-search"> </i></span>
+
                         </div>
-                            <div class="col-auto">
+                        <div class="input-group-append">
+                            <input type="hidden" name="pageno" value="1">
+                            <button id="btnSearch" class="btn " value="Search"  type="submit"><i class="fas fa-search"> </i></button>
+                        </div>
+
+                        </div>
+                        <!--<div class="col-auto">
                                 <input type="hidden" name="pageno" value="1">
                                 <input id="btnSearch" class="btn btn-secondary" value="Search"  type="submit">
-                            </div>
+                            </div>-->
                             </form>
 
 

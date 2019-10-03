@@ -52,17 +52,21 @@ $pageNumber = 1;
             <form action="search.php" method="get">
                 <img src="assets/images/mygoogle.png" id="logo" style="width:120px" alt="Logo Website">
                 <div class="d-inline-flex queryDiv">
+
                     <select class="custom-select" id="querySelect" name="type">
                         <option value="news" <?php echo ($type == 'news')?"selected":"" ?> >News</option>
                         <option value="wikipedia" <?php echo ($type == 'wikipedia')?"selected":"" ?> >Wikipedia</option>
                     </select>
-                    <input type="text" class="form-control w-100 queryInput" value="<?php echo isset($_GET['query']) ? $_GET['query'] : '' ?>" id="query" name="query" aria-label="input search query"/>
-                    <div class="input-group-append">
-                        <span class="input-group-text"><i class="fas fa-search"> </i></span>
+                    <div class="glowBlink">
+                        <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
                     </div>
-                    <input id="btnSearch" class="btn btn-secondary " value="Search" type="submit">
+                    <div class="input-group-append">
+                        <input type="hidden" name="pageno" value="1">
+                        <button id="btnSearch" class="btn " value="Search"  type="submit"><i class="fas fa-search"> </i></button>
+                    </div>
+
                 </div>
-                <button class="btn btn-light" id="summaryBtn" onclick="return false;"> Summary options</button>
+             <!--   <button class="btn btn-light" id="summaryBtn" onclick="return false;"> Summary options</button>-->
         </div></div>
 
 

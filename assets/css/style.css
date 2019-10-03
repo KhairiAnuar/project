@@ -12,6 +12,9 @@ body{
     width:1000px;
 
 }
+.fa-search{
+    color:#0f1010;
+}
 #summaryDiv{
     display: none;
 
@@ -97,16 +100,17 @@ input:checked + .slider:before {
     color: #1906A7;
 }
 #searchBox{
-    margin:20px 0 10px 0;
+    margin:25px 0 10px 0;
 }
 .queryDiv{
     width: 45%;
 }
-#output{
-    margin:10px 10px 10px 6%;
-
+#btnSearch:hover,#btnSearch:after{
+    background: #ced2d7;
+    border-radius: 0 1.7rem 1.7rem 0;
 }
-#output p{
+#output{
+    margin:10px 10px 10px 8.5%;
 
 }
 .searchResult .img-thumbnail{
@@ -118,7 +122,7 @@ input:checked + .slider:before {
 
 }
 #searchBox button ,#searchBox input {
-    margin-left: 10px;
+    margin-left: 2px;
 
 }
 #searchBox #logo{
@@ -144,14 +148,20 @@ input:checked + .slider:before {
 .block h3 {
     color: black;
 }
-.input-group-text{
+.input-group-append{
+    border:1px solid #0f1010;
     background-color: inherit;
     border-left: 0;
     border-radius: 0 1.7rem 1.7rem 0;
 
 }
+.indexForm{
+
+    clear: both;
+    display: table;
+}
 #query{
-    height: 50px;
+    height: 65px;
     border-right: 0;
    /* border-left: 0;*/
 }
@@ -159,10 +169,155 @@ input:checked + .slider:before {
     width: auto !important;
 }
 #querySelect{
-    height: 50px;
+    height: 65px;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
+    cursor: pointer;
 }
 .card{
     width:100%; max-width: 650px;
+}
+
+/*Glow blink effect input text field https://codepen.io/jackrugile/full/ABeIi*/
+@import url(https://fonts.googleapis.com/css?family=Cabin:400);
+
+.glowBlink {
+    /*
+    background: #151515;
+    */
+    height: 100%;
+    /*
+    position: absolute;
+    */
+    text-align: left;
+    width: 100%;
+}
+
+.glowBlink:before,
+.glowBlink:after {
+    content: '';
+    display: block;
+    left: 50%;
+    margin: 0 0 0 -400px;
+    /*position: absolute;*/
+    width: 800px;
+}
+
+.glowBlink:before {
+    background: #f2f2f2;
+    background: linear-gradient(left, #00799d, #e6e6e6, #0b8d9d);
+    top: 192px;
+    color: #495057;
+}
+
+.glowBlink:after {
+    background: #e6e6e6;
+    background: linear-gradient(left, #00799d, #f2f2f2, #3e83ad);
+    top: 191px;
+}
+
+.glowBlink form {
+    background: #f2f2f2;
+    background: linear-gradient(#f2f2f2, #f2f2f2);
+    border: 1px solid #f2f2f2;
+    border-radius: 5px;
+    /*
+    box-shadow: inset 0 0 0 1px #272727;
+    */
+    display: inline-block;
+    /*font-size: 0px;*/
+    margin: 150px auto 0;
+    padding: 20px;
+    position: relative;
+    z-index: 1;
+}
+
+.glowBlink input [type=text] {
+
+}
+
+.ie .glowBlink input [type=text]  {
+    line-height: 40px;
+}
+
+.glowBlink input::-webkit-input-placeholder {
+    color: #8e8e8e;
+}
+
+.glowBlink input:-moz-placeholder {
+    color: #8e8e8e;
+}
+
+
+.glowBlink input[type=text] ,.glowBlink input[type=text]:focus ,.glowBlink button{
+    animation: glow 1300ms ease-out infinite alternate;
+    background: #f2f2f2;
+    background: linear-gradient(#ffffff, #ffffff);
+    border-color: #ced4da;
+    /*
+    box-shadow: 0 0 5px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(11, 141, 157, 0.1), 0 2px 0 #0b8d9d;
+    */
+    color: #000000;
+    outline: none;
+}
+
+.glowBlink input[type=text] :focus::-webkit-input-placeholder {
+    color: #8e8e8e;
+}
+
+.glowBlink input[type=text] :focus:-moz-placeholder {
+    color: #8e8e8e;
+}
+
+/*.glowBlink button {
+
+    !*background: #222;*!
+    !*background: linear-gradient(#333, #222);*!
+    box-sizing: border-box;
+    !*border: 1px solid #444;*!
+    border-left-color: #000;
+    border-radius: 0 5px 5px 0;
+    !*
+    box-shadow: 0 2px 0 #000;
+    *!
+    color: #fff;
+    display: block;
+    float: left;
+
+    font-weight: 400;
+
+    line-height: 40px;
+    margin: 0;
+    padding: 0;
+    position: relative;
+    !*text-shadow: 0 -1px 0 #ffffff;*!
+    width: 80px;
+}*/
+
+/*.glowBlink button:hover,
+.glowBlink button:focus {
+    background: #292929;
+    background: linear-gradient(#393939, #292929);
+    color: #00799d;
+    outline: none;
+}*/
+
+/*.glowBlink button:active {
+    background: #292929;
+    background: linear-gradient(#393939, #292929);
+    !*
+    box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
+    *!
+    top: 1px;
+}*/
+
+@keyframes glow {
+    0% {
+        border-color: #00799d;
+        box-shadow: 0 0 3px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(0, 121, 157, 0.1), 0 1px 0 #87939d;
+    }
+    100% {
+        border-color: #00799d;
+        box-shadow: 0 0 15px rgba(0, 121, 157, 0.6), inset 0 0 10px rgba(2, 91, 157, 0.4), 0 1px 0 #87939d;
+    }
 }
