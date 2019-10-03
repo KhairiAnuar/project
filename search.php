@@ -58,7 +58,8 @@ $pageNumber = 1;
                         <option value="wikipedia" <?php echo ($type == 'wikipedia')?"selected":"" ?> >Wikipedia</option>
                     </select>
                     <div class="glowBlink">
-                        <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
+                        <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
+                               id="query" name="query" aria-label="input search query"/>
                     </div>
                     <div class="input-group-append">
                         <input type="hidden" name="pageno" value="1">
