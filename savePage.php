@@ -154,7 +154,7 @@ if (strpos( $url, 'wiki')) {
         /*$sumhtml->find('#bodyContent',0)->outertext='<div style="max-width:70%; float:left;">'.$sumhtml->find('#bodyContent',0)->outertext.'</div>';*/
         if($sumhtml->find('body',0)){
             $sumhtml->find('body',0)->outertext='<div class="container"><div class="row"><div class="col-8">'.$sumhtml->find('#content',0)->outertext.'</div><div class="col-4"><script type="text/javascript" src="assets/scripts/collapse.js" ></script> <div class="mw-stack clickableBigger" style="padding:100px 50px 100px 50px;cursor:pointer;  box-sizing:border-box;float:right; clear:right;"  onclick="window.location.href = \'origin.html\'">
-                                                                <!--  <button class="" type="button" style="border-radius:0;">--> <a class="btn btn-outline-secondary btn-lg btnSwitch btnGlow" style="padding: 1rem 1rem; text-decoration: none" href="origin.html"><h3 style=" color: #6c757d;">Go original page</h3></a> 
+                                                                <!--  <button class="" type="button" style="border-radius:0;">--> <a class="btn btn-secondary btn-lg btnSwitch btnGlow" style="padding: 1rem 1rem; text-decoration: none" href="origin.html"><h3 style=" color: #6c757d;">Go original page</h3></a> 
                                                                   </div></div></div></div>';
         }
         //$body->plaintext .=' ';
@@ -274,7 +274,7 @@ else if (strpos($url, 'abc')){
         if($sumhtml->find('#single',0 )) {
             $head = $sumhtml->find('.headline', 0);
             $sumhtml->find('#single', 0)->innertext = '<div id="info"><h1>' . $head . '</h1><div class="text-right" onclick="window.location.href = \'origin.html\'">
-                                                                       <a class="btn btn-outline-secondary btn-lg btnSwitch btnGlow" style="padding: 1rem 1rem; margin-bottom:10px; " href="origin.html"><h4 >Go original page</h4></a> 
+                                                                       <a class="btn btn-secondary btn-lg btnSwitch btnGlow" style="padding: 1rem 1rem; margin-bottom:10px; " href="origin.html"><h4 >Go original page</h4></a> 
                                                                         </div> <img class="image" src="' . $extract->image . '" alt="Hero image"></div>';
             $sumhtml->find('.meta',0)->outertext='';
               $sumhtml->find('#single',0)->innertext.='<div id="story" style="display:block"><p></p>'
@@ -324,7 +324,7 @@ if (strpos( $url, 'wiki')) {
 
     if($orihtml->find('#mw-head-base',0)){
     $orihtml->find('#mw-head-base',0)->innertext='<div class="mw-stack clickableBigger" style="  box-sizing:border-box;float:right; clear:right; "  onclick="window.location.href = \'summarized.html\'">
-                                                                <!--  <button class="" type="button" style="border-radius:0;">--> <a class="btn btn-outline-secondary btn-lg btnSwitch btnGlow" style="border-radius: .3rem; text-decoration: none" href="summarized.html"><h4 style="font-size: 100%; color: #6c757d;">Go summarized page</h4></a> 
+                                                                <!--  <button class="" type="button" style="border-radius:0;">--> <a class="btn btn-secondary btn-lg btnSwitch btnGlow" style="border-radius: .3rem; text-decoration: none" href="summarized.html"><h4 style="font-size: 100%; color: #6c757d;">Go summarized page</h4></a> 
                                                                   </div>';
     }
 }
@@ -403,7 +403,7 @@ else if (strpos($url, 'abc')){
         $orihtml->find('aside[class=rightrail]',0)->outertext='';
         if($orihtml->find('p[class=intro]',0)){
             $orihtml->find('p[class=intro]',0)->outertext='<div class="text-right" onclick="window.location.href = \'summarized.html\'">
-                                                                       <a class="btn btn-outline-secondary btn-lg btnSwitch btnGlow" style="padding: 1rem 1rem; margin-bottom:10px;" href="summarized.html"><h4 >Go summarized page</h4></a> 
+                                                                       <a class="btn btn-secondary btn-lg btnSwitch btnGlow" style="padding: 1rem 1rem; margin-bottom:10px;" href="summarized.html"><h4 >Go summarized page</h4></a> 
                                                                         </div>';
         }
     foreach ($orihtml->find('.caption') as $caption){
