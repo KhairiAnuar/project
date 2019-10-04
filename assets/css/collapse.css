@@ -30,3 +30,7 @@
 .mw-body-content p{
     font-size: 1.25rem;
 }
+#content{
+    margin-left:50px;
+    border: 0;
+}

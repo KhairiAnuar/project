@@ -13,7 +13,7 @@ body{
 
 }
 .fa-search{
-    color:#0f1010;
+    color:white;
 }
 #summaryDiv{
     display: none;
@@ -105,10 +105,24 @@ input:checked + .slider:before {
 .queryDiv{
     width: 45%;
 }
-#btnSearch:hover,#btnSearch:after{
-    background: #ced2d7;
-    border-radius: 0 1.7rem 1.7rem 0;
+.fa-search{
+    color:#868e96;
+
 }
+
+.input-group-append:hover,#btnSearch:hover,#btnSearch:hover>i{
+    background-color: #868e96;
+    border-left: 0;
+    color: white !important;
+    border-radius: .25rem;
+
+}
+
+/*#btnSearch:hover,#btnSearch:after,.fa-search:hover{
+    background: #868e96;
+    color: white !important;
+
+}*/
 #output{
     margin:10px 10px 10px 8.5%;
 
@@ -148,13 +162,7 @@ input:checked + .slider:before {
 .block h3 {
     color: black;
 }
-.input-group-append{
-    border:1px solid #0f1010;
-    background-color: inherit;
-    border-left: 0;
-    border-radius: 0 1.7rem 1.7rem 0;
 
-}
 .indexForm{
 
     clear: both;
@@ -172,7 +180,6 @@ input:checked + .slider:before {
     height: 65px;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
-    cursor: pointer;
 }
 .card{
     width:100%; max-width: 650px;
@@ -250,7 +257,7 @@ input:checked + .slider:before {
 
 
 .glowBlink input[type=text] ,.glowBlink input[type=text]:focus ,.glowBlink button{
-    animation: glow 1300ms ease-out infinite alternate;
+    animation: glow 2500ms ease-out infinite alternate;
     background: #f2f2f2;
     background: linear-gradient(#ffffff, #ffffff);
     border-color: #ced4da;
@@ -260,7 +267,9 @@ input:checked + .slider:before {
     color: #000000;
     outline: none;
 }
-
+.glowBlink input[type=text]:focus{
+animation: none;
+}
 .glowBlink input[type=text] :focus::-webkit-input-placeholder {
     color: #8e8e8e;
 }
@@ -314,7 +323,7 @@ input:checked + .slider:before {
 @keyframes glow {
     0% {
         border-color: #00799d;
-        box-shadow: 0 0 3px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(0, 121, 157, 0.1), 0 1px 0 #87939d;
+        box-shadow: 0 0 1px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(0, 121, 157, 0.1), 0 1px 0 #87939d;
     }
     100% {
         border-color: #00799d;

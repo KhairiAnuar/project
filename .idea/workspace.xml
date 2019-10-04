@@ -2,7 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62458d4f-d025-48c6-8585-cced2c13357a" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/assets/css/Knews.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/collapse.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/collapse.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assets/css/wikipedia.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/wikipedia.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/origin.html" beforeDir="false" afterPath="$PROJECT_DIR$/origin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/savePage.php" beforeDir="false" afterPath="$PROJECT_DIR$/savePage.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/search.php" beforeDir="false" afterPath="$PROJECT_DIR$/search.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/summarized.html" beforeDir="false" afterPath="$PROJECT_DIR$/summarized.html" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -34,19 +43,19 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php">
+        <entry file="file://$PROJECT_DIR$/index.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2006">
-              <caret line="118" column="43" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="43" />
+            <state relative-caret-position="185">
+              <caret line="42" column="54" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="54" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.php">
+        <entry file="file://$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+            <state relative-caret-position="448">
+              <caret line="118" column="43" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -54,17 +63,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/style.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
+            <state relative-caret-position="192">
+              <caret line="181" column="45" selection-start-line="181" selection-start-column="45" selection-end-line="181" selection-end-column="45" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/search.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="175">
-              <caret line="60" column="179" selection-start-line="60" selection-start-column="179" selection-end-line="60" selection-end-column="179" />
+            <state relative-caret-position="240">
+              <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="79" />
             </state>
           </provider>
         </entry>
@@ -72,7 +81,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/getsummary.php">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="833">
+            <state relative-caret-position="448">
               <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
             </state>
           </provider>
@@ -81,30 +90,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/collapse.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="363">
-              <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+            <state relative-caret-position="556">
+              <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/savePage.php">
+        <entry file="file://$PROJECT_DIR$/assets/css/Knews.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="119">
-              <caret line="106" column="91" selection-start-line="106" selection-start-column="83" selection-end-line="106" selection-end-column="91" />
-              <folding>
-                <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#button#0;n#div#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="612">
+              <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -112,10 +108,23 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-17">
-              <caret line="5" column="72" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="72" />
+            <state relative-caret-position="17">
+              <caret line="5" column="72" lean-forward="true" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/savePage.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="629">
+              <caret line="326" column="287" selection-start-line="326" selection-start-column="287" selection-end-line="326" selection-end-column="287" />
               <folding>
-                <element signature="e#34059#34242#2" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h3#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#h4#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -135,36 +144,36 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>main</find>
-      <find>p-lo</find>
-      <find>logo</find>
-      <find>infobo</find>
-      <find>wiki</find>
-      <find>meta</find>
-      <find>content</find>
-      <find>webdesigntuts-workshop</find>
-      <find>glow</find>
-      <find>position</find>
-      <find>/*position: absolute;*/</find>
-      <find>position: absolute</find>
-      <find>center</find>
-      <find>box</find>
-      <find>color</find>
-      <find>13px</find>
-      <find>radiu</find>
-      <find>input-group-append</find>
-      <find>btnSearch</find>
-      <find>style.</find>
-      <find>btn</find>
-      <find>mw</find>
-      <find>btnGlow</find>
-      <find>rad</find>
-      <find>#searchBox button</find>
-      <find>50px</find>
-      <find>&lt;!--   &lt;button class=&quot;btn btn-light&quot; id=&quot;summaryBtn&quot; onclick=&quot;return false;&quot;&gt; Summary options&lt;/button&gt;--&gt;</find>
-      <find>searchBox</find>
       <find>6%</find>
       <find>clickableBigger</find>
+      <find>70px</find>
+      <find>margin</find>
+      <find>btnSwitch</find>
+      <find>white</find>
+      <find>20px</find>
+      <find>h3</find>
+      <find>btn-primary</find>
+      <find>padding</find>
+      <find>input-group-append</find>
+      <find>border</find>
+      <find>border: 1px</find>
+      <find>hover</find>
+      <find>fa-sea</find>
+      <find>g</find>
+      <find>wikipedia.</find>
+      <find>1300</find>
+      <find>ms</find>
+      <find>Knews</find>
+      <find>cursor</find>
+      <find>color</find>
+      <find>0000</find>
+      <find>00000</find>
+      <find>000000</find>
+      <find>btnGlow</find>
+      <find>wikipedia</find>
+      <find>outline</find>
+      <find>second</find>
+      <find>btnGlo</find>
     </findStrings>
     <dirStrings>
       <dir>C:\xampp\htdocs\project\web-scraper</dir>
@@ -216,12 +225,13 @@
         <option value="$PROJECT_DIR$/summarized.html" />
         <option value="$PROJECT_DIR$/getsummary.php" />
         <option value="$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php" />
-        <option value="$PROJECT_DIR$/assets/css/wikipedia.css" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/savePage.php" />
-        <option value="$PROJECT_DIR$/assets/css/style.css" />
         <option value="$PROJECT_DIR$/assets/css/collapse.css" />
+        <option value="$PROJECT_DIR$/index.php" />
         <option value="$PROJECT_DIR$/search.php" />
+        <option value="$PROJECT_DIR$/assets/css/style.css" />
+        <option value="$PROJECT_DIR$/assets/css/Knews.css" />
+        <option value="$PROJECT_DIR$/assets/css/wikipedia.css" />
+        <option value="$PROJECT_DIR$/savePage.php" />
       </list>
     </option>
   </component>
@@ -491,12 +501,13 @@
       <workItem from="1569933775561" duration="7744000" />
       <workItem from="1569984779405" duration="10612000" />
       <workItem from="1570026723174" duration="1018000" />
-      <workItem from="1570075647690" duration="16298000" />
+      <workItem from="1570075647690" duration="21956000" />
+      <workItem from="1570155277572" duration="9907000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="729742000" />
+    <option name="totallyTimeSpent" value="745307000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1550" height="838" extended-state="6" />
@@ -504,7 +515,7 @@
     <layout>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24966443" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.3295302" />
-      <window_info content_ui="combo" id="Project" order="2" side_tool="true" weight="0.06375839" />
+      <window_info content_ui="combo" id="Project" order="2" side_tool="true" weight="0.16845638" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4986577" weight="0.32719547" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49530202" weight="0.73512745" />
@@ -528,7 +539,7 @@
     <layout-to-restore>
       <window_info id="Structure" order="0" side_tool="true" weight="0.24966443" />
       <window_info id="Favorites" order="1" side_tool="true" weight="0.3295302" />
-      <window_info active="true" content_ui="combo" id="Project" order="2" side_tool="true" visible="true" weight="0.06375839" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" side_tool="true" visible="true" weight="0.16845638" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" sideWeight="0.4986577" weight="0.32719547" />
       <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49530202" weight="0.73512745" />
@@ -562,13 +573,6 @@
     <SUITE FILE_PATH="coverage/project$scrap.coverage" NAME="scrap Coverage Results" MODIFIED="1561205833534" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="jar://$APPLICATION_HOME_DIR$/lib/platform-impl.jar!/resources/html5-schema/html5/common.rnc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="196">
-          <caret line="123" column="18" selection-start-line="123" selection-start-column="18" selection-end-line="123" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$USER_HOME$/Desktop/Project Summarization/simplehtmldom_1_9/example/example_extract_html.php" />
     <entry file="file://$USER_HOME$/Desktop/Project Summarization/simplehtmldom_1_9/example/example_modify_contents.php" />
     <entry file="file://$PROJECT_DIR$/assets/savePage/url_to_absolute.php">
@@ -748,73 +752,71 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2006">
+        <state relative-caret-position="448">
           <caret line="118" column="43" selection-start-line="118" selection-start-column="39" selection-end-line="118" selection-end-column="43" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/getsummary.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="833">
+        <state relative-caret-position="448">
           <caret line="49" column="20" selection-start-line="49" selection-start-column="20" selection-end-line="49" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="114" column="1" selection-start-line="114" selection-start-column="1" selection-end-line="114" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-17">
-          <caret line="5" column="72" selection-start-line="5" selection-start-column="65" selection-end-line="5" selection-end-column="72" />
-          <folding>
-            <element signature="e#34059#34242#2" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/savePage.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="106" column="91" selection-start-line="106" selection-start-column="83" selection-end-line="106" selection-end-column="91" />
-          <folding>
-            <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#section#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#button#0;n#div#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/assets/css/collapse.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="363">
-          <caret line="30" column="22" selection-start-line="30" selection-start-column="22" selection-end-line="30" selection-end-column="22" />
+        <state relative-caret-position="556">
+          <caret line="36" lean-forward="true" selection-start-line="36" selection-end-line="36" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="50" column="45" selection-start-line="50" selection-start-column="45" selection-end-line="50" selection-end-column="45" />
+        <state relative-caret-position="185">
+          <caret line="42" column="54" selection-start-line="42" selection-start-column="48" selection-end-line="42" selection-end-column="54" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/style.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="181" column="45" selection-start-line="181" selection-start-column="45" selection-end-line="181" selection-end-column="45" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/search.php">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="175">
-          <caret line="60" column="179" selection-start-line="60" selection-start-column="179" selection-end-line="60" selection-end-column="179" />
+        <state relative-caret-position="240">
+          <caret line="65" column="58" selection-start-line="65" selection-start-column="58" selection-end-line="65" selection-end-column="79" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/wikipedia.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="17">
+          <caret line="5" column="72" lean-forward="true" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/assets/css/Knews.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="612">
+          <caret line="36" column="30" lean-forward="true" selection-start-line="36" selection-start-column="30" selection-end-line="36" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/savePage.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="629">
+          <caret line="326" column="287" selection-start-line="326" selection-start-column="287" selection-end-line="326" selection-end-column="287" />
+          <folding>
+            <element signature="n#style#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h3#0;n#a#0;n#div#0;n#div#1;n#div#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#h4#0;n#a#0;n#div#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
