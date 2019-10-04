@@ -58,12 +58,12 @@ $pageNumber = 1;
                         <option value="wikipedia" <?php echo ($type == 'wikipedia')?"selected":"" ?> >Wikipedia</option>
                     </select>
                     <div class="glowBlink">
-                        <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
+                        <input type="text" placeholder="type here" class=" border-right-0 form-control w-100" value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
                                id="query" name="query" aria-label="input search query"/>
                     </div>
                     <div class="input-group-append">
                         <input type="hidden" name="pageno" value="1">
-                        <button id="btnSearch" class="btn " value="Search"  type="submit"><i class="fas fa-search"> </i></button>
+                        <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i>  <span>Search</span></button>
                     </div>
 
                 </div>
@@ -75,6 +75,7 @@ $pageNumber = 1;
 
 if(empty($_GET['query'])){
     $pageErr='No matching pages';
+    header('Location: index.php');
     ?>
     <div class="row searchResult" id="output">
     <div class="col-7">

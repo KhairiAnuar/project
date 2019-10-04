@@ -4,14 +4,14 @@
     width: 100%;
 }
 .glowBlink input[type=text] ,.glowBlink input[type=text]:focus ,.btnGlow{
-    animation: glow 1300ms ease-out infinite alternate;
+    animation: glow 2500ms ease-out infinite alternate;
     background: #f2f2f2;
     background: linear-gradient(#ffffff, #ffffff);
     border-color: #ced4da;
     /*
     box-shadow: 0 0 5px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(11, 141, 157, 0.1), 0 2px 0 #0b8d9d;
     */
-    color: #000000;
+    color: #6c757d!important;
     outline: none;
 }
 
@@ -40,8 +40,8 @@
 .mw-stack a:hover{color:#0B0080 !important;}
 .mw-stack a:active{color:#0000FF !important;}
 #content{
-    margin-bottom: 70px;
-    margin-top: 20px;
+    margin-bottom: 30px;
+    margin-top: 25px;
 }
 li.gallerybox div.thumb {
     text-align: center;
@@ -2572,19 +2572,14 @@ div.gallerytext {
     color: #0645AD;
 }
 
-.btn-lg:hover {
-    color: #0313ad;
-}
+
 
 .btnSwitch{
     font-size: 1.5rem;
     line-height: 1.5;
     border-radius: .3rem !important;
     padding: 1rem 1rem !important;
-    color: white !important;
     text-decoration: none;
-    background-color: #007bff;
-    border-color: #007bff;
     display: inline-block;
     text-align: center;
     vertical-align: middle;
@@ -2594,6 +2589,9 @@ div.gallerytext {
     user-select: none;
     transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
 }
-.btnSwitch:hover{
-    background: #005fb2;
+.btnGlow:hover,.btnGlow:active{
+    background: #6c757d;
+}
+.btnGlow:active h3,.btnGlow:hover h3,.btnGlow:active a,.btnGlow:hover a,.btnGlow:active h4,.btnGlow:hover h4{
+color:white!important;
 }

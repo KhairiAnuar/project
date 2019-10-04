@@ -49,13 +49,13 @@
 
                         </select>
                         <div class="glowBlink">
-                        <input type="text" placeholder="Enter keyword" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
+                        <input type="text" placeholder="type here" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
 
                         </div>
                         <div class="input-group-append">
                             <input type="hidden" name="pageno" value="1">
-                            <button id="btnSearch" class="btn " value="Search"  type="submit"><i class="fas fa-search"> </i></button>
-                        </div>
+                            <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i> <span >Search</span></button>
+                    </div>
 
                         </div>
                         <!--<div class="col-auto">
