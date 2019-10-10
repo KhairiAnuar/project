@@ -46,3 +46,6 @@
     outline: none;
 }
 
+#single p {
+    font-size: 21px !important;
+}
