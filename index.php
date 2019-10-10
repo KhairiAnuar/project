@@ -36,33 +36,34 @@
     </head>
 
     <body>
-    <div class="container h-100">
+    <div class="container-fluid h-100">
         <div class="row align-items-center h-100">
-            <div class="col-8 mx-auto d-flex flex-column align-items-center">
+            <div class="col mx-auto d-flex flex-column align-items-center">
                 <img src="assets/images/mygoogle.png" id="logo" class="w-22" alt="Logo Website"><br>
+                <div class="row align-items-center">
+                    <div class="col">
                 <form class="indexForm" action="search.php" method="get">
+                    <div class="input-group show-idle-prompt">
+                        <div class="queryDiv form-group d-inline-flex ui-widget" style="margin-bottom: 0">
+                            <select class="custom-select border-secondary border-right-0" id="querySelect" name="type">
+                                <option value="news" selected>News</option>
+                                <option value="wikipedia">Wikipedia</option>
+                            </select>
+                            <input type="text" placeholder="type here" size="50" autofocus class="border-right-0 rounded-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
 
-                    <div class="form-group d-inline-flex ui-widget">
-                        <select class="custom-select" id="querySelect" name="type">
-                            <option value="news" selected>News</option>
-                            <option value="wikipedia">Wikipedia</option>
-
-                        </select>
-                        <div class="glowBlink">
-                        <input type="text" placeholder="type here" class=" border-right-0 form-control w-100" id="query" name="query" aria-label="input search query"/>
+                            <div class="input-group-append">
+                                <input type="hidden" name="pageno" value="1">
+                                <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i> <span >Search</span></button>
+                            </div>
 
                         </div>
-                        <div class="input-group-append">
-                            <input type="hidden" name="pageno" value="1">
-                            <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i> <span >Search</span></button>
                     </div>
-
-                        </div>
+                    </div>
                         <!--<div class="col-auto">
                                 <input type="hidden" name="pageno" value="1">
                                 <input id="btnSearch" class="btn btn-secondary" value="Search"  type="submit">
                             </div>-->
-                            </form>
+                    </form>
 
 
            </div>

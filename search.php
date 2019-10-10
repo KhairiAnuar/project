@@ -46,26 +46,27 @@ $pageNumber = 1;
     </script>
     </head>
 <body>
-<div class="container-fluid">
+<div class="container">
     <div class="row">
         <div class="col-12" id="searchBox">
             <form action="search.php" method="get">
-                <img src="assets/images/mygoogle.png" id="logo" style="width:120px" alt="Logo Website">
-                <div class="d-inline-flex queryDiv">
+                <img src="assets/images/mygoogle.png" id="logo"  alt="Logo Website">
+                <div class="input-group show-idle-prompt">
+                    <div class=" queryDiv form-group d-inline-flex ui-widget" style="margin-bottom: 0">
 
-                    <select class="custom-select" id="querySelect" name="type">
-                        <option value="news" <?php echo ($type == 'news')?"selected":"" ?> >News</option>
-                        <option value="wikipedia" <?php echo ($type == 'wikipedia')?"selected":"" ?> >Wikipedia</option>
-                    </select>
-                    <div class="glowBlink">
-                        <input type="text" placeholder="type here" class=" border-right-0 form-control w-100" value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
-                               id="query" name="query" aria-label="input search query"/>
-                    </div>
-                    <div class="input-group-append">
-                        <input type="hidden" name="pageno" value="1">
-                        <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i>  <span>Search</span></button>
-                    </div>
+                        <select class="custom-select border-right-0" id="querySelect" name="type">
+                            <option value="news" <?php echo ($type == 'news')?"selected":"" ?> >News</option>
+                            <option value="wikipedia" <?php echo ($type == 'wikipedia')?"selected":"" ?> >Wikipedia</option>
+                        </select>
 
+                            <input type="text" placeholder="type here" class="border-right-0 rounded-0 form-control w-100" value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
+                                   id="query" name="query" aria-label="input search query"/>
+
+                        <div class="input-group-append">
+                            <input type="hidden" name="pageno" value="1">
+                            <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i>  <span>Search</span></button>
+                        </div>
+                    </div>
                 </div>
              <!--   <button class="btn btn-light" id="summaryBtn" onclick="return false;"> Summary options</button>-->
         </div></div>
