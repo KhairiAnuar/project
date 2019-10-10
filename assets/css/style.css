@@ -9,7 +9,6 @@ body{
     height: 100vh;
     min-width:1000px;        /* Suppose you want minimum width of 1000px */
     width: auto !important;  /* Firefox will set width as auto */
-    width:1000px;
 
 }
 .fa-search{
@@ -102,9 +101,7 @@ input:checked + .slider:before {
 #searchBox{
     margin:25px 0 10px 0;
 }
-.queryDiv{
-    width: 45%;
-}
+
 .fa-search{
     color:#868e96;
 
@@ -114,8 +111,11 @@ input:checked + .slider:before {
     background-color: #868e96;
     border-left: 0;
     color: white !important;
-    border-radius: .25rem;
-
+    border-radius: 0 .25rem .25rem 0;
+}
+#btnSearch{
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
 }
 
 /*#btnSearch:hover,#btnSearch:after,.fa-search:hover{
@@ -123,10 +123,10 @@ input:checked + .slider:before {
     color: white !important;
 
 }*/
-#output{
+/*#output{
     margin:10px 10px 10px 8.5%;
 
-}
+}*/
 .searchResult .img-thumbnail{
     max-width: 200px;
     margin-top: 17px;
@@ -135,22 +135,15 @@ input:checked + .slider:before {
     margin: 15px 0 15px 0;
 
 }
-#searchBox button ,#searchBox input {
-    margin-left: 2px;
-
-}
 #searchBox #logo{
-    width: 120px;
+    width: 200px;
     margin-right: 10px;
     margin-left: 10px;
 }
-.queryInput{/*
-    border-top-left-radius: 10rem;
-    border-bottom-left-radius: 10rem;*/
-    height: 50px;
-    margin-left:0 !important;
-}
 
+#logo{
+    margin-bottom:20px;
+}
 .block {
     text-decoration: none;
     width: 200px;
@@ -169,33 +162,54 @@ input:checked + .slider:before {
     display: table;
 }
 #query{
-    height: 65px;
-    border-right: 0;
+    /*height: 65px;
+    border-right: 0;*/
    /* border-left: 0;*/
+    width: 100%;
+    height: calc(4rem + 3px);
+    line-height: 1.5;
+    font-weight: 400;
+    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    display: block;
+    color: #495057;
+    background-color: #fff;
+    background-clip: padding-box;
+    border: 0.1rem solid grey;
+    overflow: visible;
+}
+.queryDiv{
+    width: 100%;
 }
 .custom-select{
     width: auto !important;
 }
 #querySelect{
-    height: 65px;
+    height: calc(4rem + 3px);
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
+    border: 0.1rem solid grey;
+}
+#btnSearch{
+    border: 0.1rem solid grey;
 }
 .card{
     width:100%; max-width: 650px;
 }
 
 /*Glow blink effect input text field https://codepen.io/jackrugile/full/ABeIi*/
+/*
 @import url(https://fonts.googleapis.com/css?family=Cabin:400);
 
 .glowBlink {
-    /*
+    !*
     background: #151515;
-    */
+    *!
     height: 100%;
-    /*
+    !*
     position: absolute;
-    */
+    *!
     text-align: left;
     width: 100%;
 }
@@ -206,7 +220,7 @@ input:checked + .slider:before {
     display: block;
     left: 50%;
     margin: 0 0 0 -400px;
-    /*position: absolute;*/
+    !*position: absolute;*!
     width: 800px;
 }
 
@@ -228,20 +242,17 @@ input:checked + .slider:before {
     background: linear-gradient(#f2f2f2, #f2f2f2);
     border: 1px solid #f2f2f2;
     border-radius: 5px;
-    /*
+    !*
     box-shadow: inset 0 0 0 1px #272727;
-    */
+    *!
     display: inline-block;
-    /*font-size: 0px;*/
+    !*font-size: 0px;*!
     margin: 150px auto 0;
     padding: 20px;
     position: relative;
     z-index: 1;
 }
 
-.glowBlink input [type=text] {
-
-}
 
 .ie .glowBlink input [type=text]  {
     line-height: 40px;
@@ -261,9 +272,9 @@ input:checked + .slider:before {
     background: #f2f2f2;
     background: linear-gradient(#ffffff, #ffffff);
     border-color: #ced4da;
-    /*
+    !*
     box-shadow: 0 0 5px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(11, 141, 157, 0.1), 0 2px 0 #0b8d9d;
-    */
+    *!
     color: #000000;
     outline: none;
 }
@@ -278,7 +289,7 @@ animation: none;
     color: #8e8e8e;
 }
 
-/*.glowBlink button {
+!*.glowBlink button {
 
     !*background: #222;*!
     !*background: linear-gradient(#333, #222);*!
@@ -301,24 +312,24 @@ animation: none;
     position: relative;
     !*text-shadow: 0 -1px 0 #ffffff;*!
     width: 80px;
-}*/
+}*!
 
-/*.glowBlink button:hover,
+!*.glowBlink button:hover,
 .glowBlink button:focus {
     background: #292929;
     background: linear-gradient(#393939, #292929);
     color: #00799d;
     outline: none;
-}*/
+}*!
 
-/*.glowBlink button:active {
+!*.glowBlink button:active {
     background: #292929;
     background: linear-gradient(#393939, #292929);
     !*
     box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
     *!
     top: 1px;
-}*/
+}*!
 
 @keyframes glow {
     0% {
@@ -328,5 +339,41 @@ animation: none;
     100% {
         border-color: #00799d;
         box-shadow: 0 0 15px rgba(0, 121, 157, 0.6), inset 0 0 10px rgba(2, 91, 157, 0.4), 0 1px 0 #87939d;
+    }
+}
+
+*/
+
+
+/* Prompts idle*/
+.idle {
+    animation: idleBlinker 2s linear;
+}
+
+@keyframes idleBlinker {
+    0% {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    25% {
+        -webkit-box-shadow: 0 0 3rem 0 green;
+        -moz-box-shadow: 0 0 3rem 0 green;
+        box-shadow: 0 0 3rem 0 green;
+    }
+    50% {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
+    }
+    75% {
+        -webkit-box-shadow: 0 0 3rem 0 green;
+        -moz-box-shadow: 0 0 3rem 0 green;
+        box-shadow: 0 0 3rem 0 green;
+    }
+    100% {
+        -webkit-box-shadow: none;
+        -moz-box-shadow: none;
+        box-shadow: none;
     }
 }
