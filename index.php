@@ -41,7 +41,7 @@
             <div class="col mx-auto d-flex flex-column align-items-center">
                 <img src="assets/images/mygoogle.png" id="logo" class="w-22" alt="Logo Website"><br>
                 <div class="row align-items-center">
-                    <div class="col">
+                    <div class="col col-md-auto">
                 <form class="indexForm" action="search.php" method="get">
                     <div class="input-group show-idle-prompt">
                         <div class="queryDiv form-group d-inline-flex ui-widget" style="margin-bottom: 0">
