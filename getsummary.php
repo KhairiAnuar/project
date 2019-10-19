@@ -45,7 +45,7 @@ if(!isset($_GET['url'])) {
     var_dump($summary);
     //--------AYLIEN https://docs.aylien.com/textapi/endpoints/#summarization
 
-    $textapi = new AYLIEN\TextAPI("4ac86380", "ebef1d17efdc2147f91b3a1b940d2bed");
+    $textapi = new AYLIEN\TextAPI("9e1273fd", "f58cc17c028aa6a2db0c556b1273d7d8");
     $summary = $textapi->Summarize(array('url' => $url, 'sentences_number' => $senNum));
     $summary= preg_replace('/\[[^\]]*]/', ' ', $summary->sentences);
    // $ratelimit=$textapi->getRateLimits();

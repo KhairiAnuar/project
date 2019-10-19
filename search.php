@@ -48,7 +48,7 @@ $pageNumber = 1;
 <body>
 <div class="container">
     <div class="row">
-        <div class="col-12" id="searchBox">
+        <div class="col-12 col-md-10" id="searchBox">
             <form action="search.php" method="get">
                 <img src="assets/images/mygoogle.png" id="logo"  alt="Logo Website">
                 <div class="input-group show-idle-prompt">
@@ -64,7 +64,7 @@ $pageNumber = 1;
 
                         <div class="input-group-append">
                             <input type="hidden" name="pageno" value="1">
-                            <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i>  <span>Search</span></button>
+                            <button id="btnSearch" class="btn btn-outline-secondary" value="Search"  type="submit"><i class="fas fa-search"> </i> <span>Search</span> </button>
                         </div>
                     </div>
                 </div>
@@ -79,7 +79,7 @@ if(empty($_GET['query'])){
     header('Location: index.php');
     ?>
     <div class="row searchResult" id="output">
-    <div class="col-7">
+    <div class="col-7 col-md-auto">
         <h5>Please enter keyword</h5>
     </div>
     </div>
@@ -105,7 +105,7 @@ if(empty($_GET['query'])){
     }
     ?>
         <div class="row searchResult" id="output">
-            <div class="col-8">
+            <div class="col-8 col-md-auto">
             <?php
 
             foreach ($searchresultsObject->results as $searchresults) {
@@ -119,12 +119,12 @@ if(empty($_GET['query'])){
 
 
                 if(!empty($searchresults->thumbnail)){
-                    echo "<div class='col-md-8'>
+                    echo "<div class='col-md-8 '>
                             <div class='card-body'>
                          
                             <h3 class='resultTitle'> <img src='https://www.google.com/s2/favicons?domain=".$searchresults->link."' alt='Website Icon'><a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">".nl2br("\t") . $searchresults->title . "</a></h3>" . nl2br("\n")."<div class='d-flex flex-row'><p>".$searchresults->snippet."</p></div></div></div><a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl."><img class='card-img img-thumbnail rounded' src='".$searchresults->thumbnail."' alt='website thumbnail image'></a></div></div></div></div>";
                 }
-                else {echo "<div class='col-md-12'>
+                else {echo "<div class='col-md-12 '>
                             <div class='card-body'><h3 class='resultTitle'> <img src='https://www.google.com/s2/favicons?domain=".$searchresults->link."' alt='Website Icon'> <a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">".nl2br("\t"). $searchresults->title . "</a></h3>" . nl2br("\n")."<p>".$searchresults->htmlSnippet."</p></div></div></div></div></div></div>";}
 /*
                 echo "<div style='display: table;'><div style='display: table-row'><p style=' display: table-cell;'>".$searchresults->htmlSnippet."</p>";
