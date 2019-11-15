@@ -2,12 +2,8 @@
 session_start();
 require 'CustomSearch/GoogleCustomSearch.php';
 $apiKey = 'AIzaSyAK6TjtECs2okydk2uvUtedJFWcV31jCLc';
-//Apikey1: AIzaSyD4WaKSSRrkabUrPDiyN0NrNRF2pAYRnlU
-//Apikey2: AIzaSyAK6TjtECs2okydk2uvUtedJFWcV31jCLc
 $csKey = "013562356057062446115:fowql5wsdju";
-//Cskey1: 013562356057062446115:fhyiygpryes
-//Cskey2: 013562356057062446115:fowql5wsdju
-//
+
 $pageErr='';
 if(!isset($term)){
     $term='';
@@ -15,7 +11,7 @@ if(!isset($term)){
 if(empty($_GET['type'])){
 $type='news';
 }else{$type=$_GET['type'] ;}
-//if(isset($_GET['type'])){}
+
 $search = new CustomSearch\GoogleCustomSearch($csKey, $apiKey);
 $prevIndex = 0;
 $nextIndex = 0;
@@ -33,17 +29,7 @@ $pageNumber = 1;
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="assets/css/style.css">
     <script type="text/javascript"> (function() { var css = document.createElement('link'); css.href = 'https://use.fontawesome.com/releases/v5.1.0/css/all.css'; css.rel = 'stylesheet'; css.type = 'text/css'; document.getElementsByTagName('head')[0].appendChild(css); })(); </script>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-    <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="assets/scripts/app.js"></script>
-    <script type="text/javascript">
-        $(document).ready(function(){
-            $("#summaryBtn").click(function(){
-                $("#summaryDiv").toggle("slow");
-            });
-        });
-    </script>
     </head>
 <body>
 <div class="container">
@@ -59,7 +45,7 @@ $pageNumber = 1;
                             <option value="wikipedia" <?php echo ($type == 'wikipedia')?"selected":"" ?> >Wikipedia</option>
                         </select>
 
-                            <input type="text" placeholder="type here" class="border-right-0 rounded-0 form-control w-100" autofocus value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
+                        <input type="text" placeholder="type here" class="border-right-0 rounded-0 form-control w-100" autofocus value="<?php echo isset($_GET['query']) ? $_GET['query'] : ''; ?>"
                                    id="query" name="query" aria-label="input search query"/>
 
                         <div class="input-group-append">
@@ -68,12 +54,12 @@ $pageNumber = 1;
                         </div>
                     </div>
                 </div>
-             <!--   <button class="btn btn-light" id="summaryBtn" onclick="return false;"> Summary options</button>-->
-        </div></div>
+        </div>
+    </div>
 
 
 <?php
-
+//Check query keywords
 if(empty($_GET['query'])){
     $pageErr='No matching pages';
     header('Location: index.php');
@@ -90,96 +76,56 @@ if(empty($_GET['query'])){
         $type=$_GET['type'];
 
     }
-
-
-
     if(!empty($_GET['pageno'])){
         $pageNumber=intval($_GET['pageno']);
 
-    }
+    }else{$pageNumber=1;}
+
+    //Check search type
     if($type=='news'){
-        $searchresultsObject = $search->search($term,'www.kidsnews.com.au','date:r:20170101:20190817',$pageNumber,10);
+        $searchResultsObject = $search->search($term,'www.kidsnews.com.au','date:r:20170101:20190817',$pageNumber,10);
     }
     else{
-        $searchresultsObject = $search->search($term,'simple.wikipedia.org','',$pageNumber,10);
+        $searchResultsObject = $search->search($term,'simple.wikipedia.org','',$pageNumber,10);
     }
     ?>
         <div class="row searchResult" id="output">
             <div class="col-8 col-md-auto">
             <?php
 
-            foreach ($searchresultsObject->results as $searchresults) {
+            foreach ($searchResultsObject->results as $searchresults) {
                 $searchresults->snippet = preg_replace('!\s+!', ' ', $searchresults->htmlSnippet);
                 $encodedUrl=urlencode($searchresults->link);
                 echo "<div class='searchResultRow'>  
                     <div class='row no-gutters'>
                        <div class='card' style=''>
-                        <div class='row no-gutters'>
-                        ";//"<a class='resultLinks' onclick='track(".$searchresults->link.")' href=" . $searchresults->link . ">" . $searchresults->htmlFormattedUrl. "</a>"
-
+                        <div class='row no-gutters'>";
 
                 if(!empty($searchresults->thumbnail)){
+                    //Search results div with hero images
                     echo "<div class='col-md-8 '>
-                            <div class='card-body'>
-                         
-                            <h3 class='resultTitle'> <img src='https://www.google.com/s2/favicons?domain=".$searchresults->link."' alt='Website Icon'><a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">".nl2br("\t") . $searchresults->title . "</a></h3>" . nl2br("\n")."<div class='d-flex flex-row'><p>".$searchresults->snippet."</p></div></div></div><a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl."><img class='card-img img-thumbnail rounded' src='".$searchresults->thumbnail."' alt='website thumbnail image'></a></div></div></div></div>";
+                            <div class='card-body'>         
+                            <h3 class='resultTitle'> <img src='https://www.google.com/s2/favicons?domain=".$searchresults->link."' alt='Website Icon'>
+                            <a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">".nl2br("\t") . $searchresults->title . "</a></h3>"
+                                . nl2br("\n")."<div class='d-flex flex-row'><p>".$searchresults->snippet."</p></div></div></div>
+                                <a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl.">
+                                <img class='card-img img-thumbnail rounded' src='".$searchresults->thumbnail."' alt='website thumbnail image'></a></div></div></div></div>";
                 }
+                //Search results div without hero images
                 else {echo "<div class='col-md-12 '>
-                            <div class='card-body'><h3 class='resultTitle'> <img src='https://www.google.com/s2/favicons?domain=".$searchresults->link."' alt='Website Icon'> <a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">".nl2br("\t"). $searchresults->title . "</a></h3>" . nl2br("\n")."<p>".$searchresults->htmlSnippet."</p></div></div></div></div></div></div>";}
-/*
-                echo "<div style='display: table;'><div style='display: table-row'><p style=' display: table-cell;'>".$searchresults->htmlSnippet."</p>";
-                echo "<p><img style=' display: table-cell;' src='".$searchresults->thumbnail."' alt='website thumbnail image'>".$searchresults->htmlSnippet."</p></div>";*/
+                            <div class='card-body'><h3 class='resultTitle'>
+                             <img src='https://www.google.com/s2/favicons?domain=".$searchresults->link."' alt='Website Icon'> 
+                             <a  href=getsummary.php?img=on&sentence=10&url=".$encodedUrl. ">".nl2br("\t"). $searchresults->title . "</a></h3>"
+                                . nl2br("\n")."<p>".$searchresults->htmlSnippet."</p></div></div></div></div></div></div>";}
 
-            } ?>
-<!--
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row no-gutters">
-                        <div class="col-md-8">
-                            <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                            </div>
-
-
-                        </div>
-                        <div class="col-md-4">
-                            <img src="..." class="card-img" alt="...">
-                        </div>
-                    </div>
-                </div>-->
-
-
+            }//Foreach close bracket ?>
 
             </div>
-
-            <div class="col-4">
-                <div id="summaryDiv" class="card">
-                    <div class="card-header">
-                        <h5 class="card-title">Summary Settings</h5>
-                    </div>
-                    <div class="card-body">
-                        <div>
-                            <label for="toggleImg"> Do you want picture <img src="assets/images/picture.svg" alt="image icon">?</label>
-                            <label class="switch">
-                                <input type="checkbox" id="toggleImg" checked>
-                                <span class="slider round"> </span>
-                            </label>
-
-                        </div>
-                        <div class="form-group">
-                            <label for="sentNum">Number of sentences</label>
-                            <input type="number" class="form-control" id="sentNum" min="5" max="10">
-                        </div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     <?php
-    $total_pages=7/*$searchresultsObject->end*/;
+    $total_pages=7/*$searchResultsObject->end*/;
     $adjacents=2;
-    //Here we generates the range of the page numbers which will display.
+    //Here generate the range of the page numbers which will display.
     if($total_pages <= (1+($adjacents * 2))) {
         $start = 1;
         $end   = $total_pages;

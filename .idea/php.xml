@@ -3,7 +3,6 @@
   <component name="PhpIncludePathManager">
     <include_path>
       <path value="$PROJECT_DIR$/vendor/composer" />
-      <path value="$PROJECT_DIR$/vendor/mashape/unirest-php" />
       <path value="$PROJECT_DIR$/vendor/aylien/textapi" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
     </include_path>
