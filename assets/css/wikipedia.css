@@ -12,6 +12,11 @@
     cursor:pointer
 }
 
+.btn-secondary {
+    color: #fff;
+    background-color: #6c757d;
+    border-color: #6c757d;
+}
 
 .mw-parser-output p{font-size:1.25em;}
 .mw-stack a{color:#0645AD !important;}

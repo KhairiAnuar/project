@@ -3,8 +3,7 @@
 	*** HTML Content Extractor class *** 
 	Copyright 	: Janis Elsts, 2008
 	Website 	: http://w-shadow.com/
-	License 	: LGPL 
-	Notes	 	: If you use it, please consider giving credit / a link :)
+	License 	: LGPL
 */
 
 class ContentExtractor

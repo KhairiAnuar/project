@@ -10,7 +10,7 @@
     background-color: #5555550d;
 }
 .collapsible:after {
-    content: 'Read more \002B\ ';
+    content: "Read more \002B\ ";
     font-weight: normal;
     float: right;
     margin-left: 5px;

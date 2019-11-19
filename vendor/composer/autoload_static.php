@@ -9,10 +9,6 @@ class ComposerStaticInit788a539ee4edf387dcf502579aab502d
     public static $prefixesPsr0 = array (
         'U' => 
         array (
-            'Unirest\\' => 
-            array (
-                0 => __DIR__ . '/..' . '/mashape/unirest-php/src',
-            ),
             'Unirest' => 
             array (
                 0 => __DIR__ . '/../..' . '/lib',
