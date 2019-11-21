@@ -1,4 +1,7 @@
-//Expand/collapse summary div
+
+
+//JavaScript toggle expand and collapse summary div
+
 var coll = document.getElementsByClassName("collapsible");
 var i;
 for (i = 0; i < coll.length; i++) {

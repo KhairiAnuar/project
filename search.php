@@ -60,7 +60,6 @@ $pageNumber = 1;
         </div>
     </div>
 
-
 <?php
 //Check query keywords
 if(empty($_GET['query'])){
@@ -77,14 +76,13 @@ if(empty($_GET['query'])){
     $term=$_GET['query'];
     if(isset($_GET['type'])){
         $type=$_GET['type'];
-
     }
     if(!empty($_GET['pageno'])){
         $pageNumber=intval($_GET['pageno']);
 
     }else{$pageNumber=1;}
 
-    //Check search type
+    //Check search type(GoogleSearch(query,sites,dates from and to,page no, number result per page)
     if($type=='news'){
         $searchResultsObject = $search->search($term,'www.kidsnews.com.au','date:r:20170101:20190817',$pageNumber,10);
     }
@@ -101,7 +99,7 @@ if(empty($_GET['query'])){
                 $encodedUrl=urlencode($searchresults->link);
                 echo "<div class='searchResultRow'>  
                     <div class='row no-gutters'>
-                       <div class='card' style=''>
+                       <div class='card'>
                         <div class='row no-gutters'>";
 
                 if(!empty($searchresults->thumbnail)){
@@ -149,7 +147,8 @@ if(empty($_GET['query'])){
 
 
     if( $total_pages > 1) { ?>
-        <ul class="pagination justify-content-center">
+        <ul class="pagination pagination-lg justify-content-center">
+            <div class="show-idle-prompt d-flex">
             <!-- Link of the first page -->
             <li class='page-item <?php ($pageNumber <= 1 ? print 'disabled' : '')?>'>
                 <a class='page-link' href='search.php?type=<?php echo $type?>&query=<?php echo $term ?>&pageno=1'><<</a>
@@ -173,12 +172,11 @@ if(empty($_GET['query'])){
             <li class='page-item <?php ($pageNumber >= $total_pages ? print 'disabled' : '')?>'>
                 <a class='page-link' href='search.php?type=<?php echo $type?>&query=<?php echo $term ?>&pageno=<?php echo $total_pages;?>'>>></a>
             </li>
+            </div>
         </ul>
     <?php } ?>
 
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
     </body>
  </html>
     <?php
