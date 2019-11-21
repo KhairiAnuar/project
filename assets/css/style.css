@@ -1,9 +1,7 @@
 .center-screen {
-
     justify-content: center;
     align-items: center;
     text-align: center;
-
 }
 body{
     height: 100vh;
@@ -13,84 +11,14 @@ body{
 .fa-search{
     color:white;
 }
-#summaryDiv{
-    display: none;
 
-}
-#summaryDiv img{
-width:40px;
-}
-#summaryDiv .card{
-
-    position:fixed;
-    overflow:visible;
-}
-
-.switch {
-    position: relative;
-    display: inline-block;
-    width: 56px;
-    height: 30px;
-}
-
-.switch input {
-    opacity: 0;
-    width: 0;
-    height: 0;
-}
-
-.slider {
-    position: absolute;
-    cursor: pointer;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #ccc;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-.slider:before {
-    position: absolute;
-    content: "";
-    height: 20px;
-    width: 20px;
-    left: 5px;
-    bottom: 5px;
-    background-color: white;
-    -webkit-transition: .4s;
-    transition: .4s;
-}
-
-input:checked + .slider {
-    background-color: #5CB85C;
-}
-
-input:focus + .slider {
-    box-shadow: 0 0 1px #5CB85C;
-}
-
-input:checked + .slider:before {
-    -webkit-transform: translateX(26px);
-    -ms-transform: translateX(26px);
-    transform: translateX(26px);
-}
-/* Rounded sliders */
-.slider.round {
-    border-radius: 30px;
-}
-
-.slider.round:before {
-    border-radius: 50%;
-}
 
 .resultLinks, .resultLinks:hover{
     color: #006621;
     text-decoration: none;
 }
 .resultTitle{
-    font-size: 17px;
+    font-size: 1.1em;
     line-height: 1.33;
     margin-bottom: 0;
 }
@@ -100,10 +28,8 @@ input:checked + .slider:before {
 #searchBox{
     margin:25px 0 10px 0;
 }
-
 .fa-search{
     color:#868e96;
-
 }
 
 .input-group-append:hover,#btnSearch:hover,#btnSearch:hover>i{
@@ -117,15 +43,6 @@ input:checked + .slider:before {
     border-top-left-radius: 0;
 }
 
-/*#btnSearch:hover,#btnSearch:after,.fa-search:hover{
-    background: #868e96;
-    color: white !important;
-
-}*/
-/*#output{
-    margin:10px 10px 10px 8.5%;
-
-}*/
 .searchResult .img-thumbnail{
     max-width: 200px;
     margin-top: 17px;
@@ -135,24 +52,13 @@ input:checked + .slider:before {
 
 }
 #searchBox #logo{
-    width: 200px;
+    max-width: 200px;
     margin-right: 10px;
     margin-left: 10px;
 }
 
 #logo{
     margin-bottom:20px;
-}
-.block {
-    text-decoration: none;
-    width: 200px;
-    height: 272px;
-    background:red;
-    border: 0;
-    display: block;
-}
-.block h3 {
-    color: black;
 }
 
 .indexForm{
@@ -161,16 +67,13 @@ input:checked + .slider:before {
     display: table;
 }
 #query{
-    /*height: 65px;
-    border-right: 0;*/
-   /* border-left: 0;*/
     width: 100%;
-    height: calc(4rem + 3px);
+    height: auto;
     line-height: 1.5;
     font-weight: 400;
     transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
     padding: .375rem .75rem;
-    font-size: 1rem;
+    font-size: 1.1rem;
     display: block;
     color: #495057;
     background-color: #fff;
@@ -185,7 +88,7 @@ input:checked + .slider:before {
     width: auto !important;
 }
 #querySelect{
-    height: calc(4rem + 3px);
+    height: auto;
     border-top-right-radius: 0 !important;
     border-bottom-right-radius: 0 !important;
     border: 0.1rem solid grey;
@@ -197,154 +100,7 @@ input:checked + .slider:before {
     width:100%; max-width: 650px;
 }
 
-/*Glow blink effect input text field https://codepen.io/jackrugile/full/ABeIi*/
-/*
-@import url(https://fonts.googleapis.com/css?family=Cabin:400);
-
-.glowBlink {
-    !*
-    background: #151515;
-    *!
-    height: 100%;
-    !*
-    position: absolute;
-    *!
-    text-align: left;
-    width: 100%;
-}
-
-.glowBlink:before,
-.glowBlink:after {
-    content: '';
-    display: block;
-    left: 50%;
-    margin: 0 0 0 -400px;
-    !*position: absolute;*!
-    width: 800px;
-}
-
-.glowBlink:before {
-    background: #f2f2f2;
-    background: linear-gradient(left, #00799d, #e6e6e6, #0b8d9d);
-    top: 192px;
-    color: #495057;
-}
-
-.glowBlink:after {
-    background: #e6e6e6;
-    background: linear-gradient(left, #00799d, #f2f2f2, #3e83ad);
-    top: 191px;
-}
-
-.glowBlink form {
-    background: #f2f2f2;
-    background: linear-gradient(#f2f2f2, #f2f2f2);
-    border: 1px solid #f2f2f2;
-    border-radius: 5px;
-    !*
-    box-shadow: inset 0 0 0 1px #272727;
-    *!
-    display: inline-block;
-    !*font-size: 0px;*!
-    margin: 150px auto 0;
-    padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-
-.ie .glowBlink input [type=text]  {
-    line-height: 40px;
-}
-
-.glowBlink input::-webkit-input-placeholder {
-    color: #8e8e8e;
-}
-
-.glowBlink input:-moz-placeholder {
-    color: #8e8e8e;
-}
-
-
-.glowBlink input[type=text] ,.glowBlink input[type=text]:focus ,.glowBlink button{
-    animation: glow 2500ms ease-out infinite alternate;
-    background: #f2f2f2;
-    background: linear-gradient(#ffffff, #ffffff);
-    border-color: #ced4da;
-    !*
-    box-shadow: 0 0 5px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(11, 141, 157, 0.1), 0 2px 0 #0b8d9d;
-    *!
-    color: #000000;
-    outline: none;
-}
-.glowBlink input[type=text]:focus{
-animation: none;
-}
-.glowBlink input[type=text] :focus::-webkit-input-placeholder {
-    color: #8e8e8e;
-}
-
-.glowBlink input[type=text] :focus:-moz-placeholder {
-    color: #8e8e8e;
-}
-
-!*.glowBlink button {
-
-    !*background: #222;*!
-    !*background: linear-gradient(#333, #222);*!
-    box-sizing: border-box;
-    !*border: 1px solid #444;*!
-    border-left-color: #000;
-    border-radius: 0 5px 5px 0;
-    !*
-    box-shadow: 0 2px 0 #000;
-    *!
-    color: #fff;
-    display: block;
-    float: left;
-
-    font-weight: 400;
-
-    line-height: 40px;
-    margin: 0;
-    padding: 0;
-    position: relative;
-    !*text-shadow: 0 -1px 0 #ffffff;*!
-    width: 80px;
-}*!
-
-!*.glowBlink button:hover,
-.glowBlink button:focus {
-    background: #292929;
-    background: linear-gradient(#393939, #292929);
-    color: #00799d;
-    outline: none;
-}*!
-
-!*.glowBlink button:active {
-    background: #292929;
-    background: linear-gradient(#393939, #292929);
-    !*
-    box-shadow: 0 1px 0 #000, inset 1px 0 1px #222;
-    *!
-    top: 1px;
-}*!
-
-@keyframes glow {
-    0% {
-        border-color: #00799d;
-        box-shadow: 0 0 1px rgba(11, 141, 157, 0.2), inset 0 0 5px rgba(0, 121, 157, 0.1), 0 1px 0 #87939d;
-    }
-    100% {
-        border-color: #00799d;
-        box-shadow: 0 0 15px rgba(0, 121, 157, 0.6), inset 0 0 10px rgba(2, 91, 157, 0.4), 0 1px 0 #87939d;
-    }
-}
-
-*/
-
-
-/* Prompts idle*/
+/* Prompt blink idle*/
 .idle {
     animation: idleBlinker 2s linear;
 }
