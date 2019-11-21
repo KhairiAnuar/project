@@ -8,8 +8,8 @@
 
 # include the files
 require_once 'getsummary.php';
-require_once 'assets/savePage/simple_html_dom.php';
-require 'assets/savePage/htmlSaveComplete.php';
+require_once 'savePage/simple_html_dom.php';
+require 'savePage/htmlSaveComplete.php';
 
 $contentonly = true;
 $allContent = false;
