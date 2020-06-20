@@ -25,8 +25,15 @@ body{
 .resultTitle,.resultTitle a,.resultTitle a:link,.resultTitle a:active,.resultTitle a:hover {
     color: #1906A7;
 }
-#searchBox{
-    margin:25px 0 10px 0;
+@media screen and (min-width: 800px) {
+    #searchBox{
+        margin:25px 0 10px 0;
+    }
+}
+@media screen and (max-width: 799px) {
+    #searchBox{
+        margin:25px 0 0 0;
+    }
 }
 .fa-search{
     color:#868e96;
@@ -60,7 +67,12 @@ body{
 #logo{
     margin-bottom:20px;
 }
-
+@media screen and (max-width: 768px){
+    #logo{ max-width: 350px}
+}
+@media screen and (max-width: 576px){
+    #logo{ max-width: 300px}
+}
 .indexForm{
 
     clear: both;

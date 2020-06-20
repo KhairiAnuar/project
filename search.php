@@ -1,7 +1,8 @@
 <?php
 session_start();
 require 'CustomSearch/GoogleCustomSearch.php';
-$apiKey = 'AIzaSyAK6TjtECs2okydk2uvUtedJFWcV31jCLc';
+
+$apiKey = "AIzaSyD4WaKSSRrkabUrPDiyN0NrNRF2pAYRnlU";
 $csKey = "013562356057062446115:fowql5wsdju";
 
 $pageErr='';

@@ -51,7 +51,10 @@ class GoogleCustomSearch
                 'verify_peer_name' => false,
             ]
         ]);
-        // use cURL if available, otherwise fallback to file_get_contents
+        /* use cURL if available, otherwise fallback to file_get_contents
+            Use: https://developers.google.com/custom-search/v1/site_restricted_api
+            If require normal web search: https://developers.google.com/custom-search/v1/overview
+        */
         if (function_exists('curl_version')) {
             $response = $this->getSslPage('https://www.googleapis.com/customsearch/v1/siterestrict?' . http_build_query($params));
         } else {
