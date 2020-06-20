@@ -2,12 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="62458d4f-d025-48c6-8585-cced2c13357a" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/project.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/project.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php" beforeDir="false" afterPath="$PROJECT_DIR$/CustomSearch/GoogleCustomSearch.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/getsummary.php" beforeDir="false" afterPath="$PROJECT_DIR$/getsummary.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/origin.html" beforeDir="false" afterPath="$PROJECT_DIR$/origin.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/summarized.html" beforeDir="false" afterPath="$PROJECT_DIR$/summarized.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -248,7 +246,7 @@
       <workItem from="1580727914565" duration="964000" />
       <workItem from="1581617334097" duration="281000" />
       <workItem from="1582450399736" duration="749000" />
-      <workItem from="1592626802867" duration="5092000" />
+      <workItem from="1592626802867" duration="6765000" />
     </task>
     <servers />
   </component>
