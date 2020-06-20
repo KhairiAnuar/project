@@ -1,6 +1,6 @@
 <!--
 Author: Khairi Anuar
-Project: Web searching with summarization
+Project QUT Bachelor of Information Honours 2019: Web searching with summarization
 -->
 
 <!DOCTYPE html>
@@ -21,7 +21,7 @@ Project: Web searching with summarization
 </head>
 
 <body>
-<div class="container-fluid h-100">
+<div class="container h-100">
     <div class="row align-items-center h-100">
         <div class="col mx-auto d-flex flex-column align-items-center">
             <img src="assets/images/mygoogle.png" id="logo" class="w-22" alt="Logo Website"><br>
@@ -49,9 +49,13 @@ Project: Web searching with summarization
                     </form>
                 </div>
             </div>
+            <div class="row mt-5"> <div class="col"> <p> <b>Made by Muhd Khairi Azmi Anuar</b> : Khairianuar164@gmail.com</p>
+                    <p class="text-justify"><b>Project Honours at QUT University in 2019 </b>: Thesis - Improving web accessibility for People with
+                        intellectual disability with integration of Text Summarization with search engine  </p>    </div> </div>
         </div>
     </div>
-</div>
+    </div>
+
 
 </body>
 </html>

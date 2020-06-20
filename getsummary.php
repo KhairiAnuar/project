@@ -46,6 +46,7 @@ if(!isset($_GET['url'])) {
             $extract ='';
             $_SESSION['extract']=$extract;
 
+
     }}
 require_once 'savePage.php';
 

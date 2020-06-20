@@ -60,7 +60,12 @@ body{
 #logo{
     margin-bottom:20px;
 }
-
+@media screen and (max-width: 768px){
+    #logo{ max-width: 350px}
+}
+@media screen and (max-width: 576px){
+    #logo{ max-width: 300px}
+}
 .indexForm{
 
     clear: both;
