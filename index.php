@@ -49,7 +49,7 @@ Project QUT Bachelor of Information Honours 2019: Web searching with summarizati
                     </form>
                 </div>
             </div>
-            <div class="row mt-5"> <div class="col"> <p> <b>Made by Muhd Khairi Azmi Anuar</b> : Khairianuar164@gmail.com</p>
+            <div class="row mt-5"> <div class="col"> <p> <b>Made by Muhd Khairi Azmi Anuar</b> : Khairiazmi.anuar@gmail.com</p>
                     <p class="text-justify"><b>Project Honours at QUT University in 2019 </b>: Thesis - Improving web accessibility for People with
                         intellectual disability with integration of Text Summarization with search engine  </p>    </div> </div>
         </div>
