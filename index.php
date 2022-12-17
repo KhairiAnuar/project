@@ -57,7 +57,7 @@ Project QUT Bachelor of Information Honours 2019: Web searching with summarizati
 						<b>Not Working due to reliance on text analysis API from <a href="https://aylien.com/blog/adieu-text-analysis-api"> Text Aylien API</a>
 						<br>This API has been discontinued recently and not able to find alternative text Analysis API </b>
 						<br><br>
-						<h5 class="text-justify">Mygoogle before Text analysis API discontinued</h5>						</div> </div>
+						<h5 class="text-justify">Mygoogle summarizer before Text analysis API discontinued</h5>						</div> </div>
 						        </div>
 
 
