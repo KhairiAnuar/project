@@ -20,6 +20,7 @@ class ComposerStaticInit788a539ee4edf387dcf502579aab502d
         'AYLIEN\\TextAPI' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/TextAPI.php',
         'AYLIEN\\TextAPI\\IO_Abstract' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/IO/Abstract.php',
         'AYLIEN\\TextAPI\\IO_Curl' => __DIR__ . '/..' . '/aylien/textapi/src/AYLIEN/IO/Curl.php',
+        'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
     );
 
     public static function getInitializer(ClassLoader $loader)

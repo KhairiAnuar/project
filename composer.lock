@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "e28be0eb32b13a1b2481cd60c037d41a",
+    "content-hash": "5456dbe2bc37344bbe131ddf37be1646",
     "packages": [
         {
             "name": "aylien/textapi",
@@ -44,6 +44,10 @@
             ],
             "description": "Client library for AYLIEN Text API",
             "homepage": "https://github.com/AYLIEN/aylien_textapi_php",
+            "support": {
+                "issues": "https://github.com/AYLIEN/aylien_textapi_php/issues",
+                "source": "https://github.com/AYLIEN/aylien_textapi_php/tree/master"
+            },
             "time": "2018-08-21T07:57:08+00:00"
         }
     ],
@@ -57,7 +61,8 @@
         "ext-json": "*",
         "ext-curl": "*",
         "ext-dom": "*",
-        "ext-mbstring": "^7.3"
+        "ext-mbstring": "^8"
     },
-    "platform-dev": []
+    "platform-dev": [],
+    "plugin-api-version": "2.3.0"
 }
