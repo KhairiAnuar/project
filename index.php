@@ -51,13 +51,19 @@ Project QUT Bachelor of Information Honours 2019: Web searching with summarizati
             </div>
             <div class="row mt-5"> <div class="col"> <p> <b>Made by Muhd Khairi Azmi Anuar</b> : Khairiazmi.anuar@gmail.com</p>
                     <p class="text-justify"><b>Project Honours at QUT University in 2019 </b>: Thesis - Improving web accessibility for People with
-                        intellectual disability with integration of Text Summarization with search engine  </p>    </div> </div>
-						
-						
-						<b>Not Working anymore due to reliance on text analysis API from <a href="https://aylien.com/blog/adieu-text-analysis-api"> Text Aylien API</a>
+                        intellectual disability with integration of Text Summarization with search engine  </p>   
 
+						
+						<b>Not Working due to reliance on text analysis API from <a href="https://aylien.com/blog/adieu-text-analysis-api"> Text Aylien API</a>
 						<br>This API has been discontinued recently and not able to find alternative text Analysis API </b>
-        </div>
+						<br><br>
+						<h5 class="text-justify">Mygoogle before Text analysis API discontinued</h5>						</div> </div>
+						        </div>
+
+
+			
+		<img src="assets/images/mygoogle-result.png" class="img-fluid mygoogle-result" alt="MyGoogle">
+
     </div>
     </div>
 
